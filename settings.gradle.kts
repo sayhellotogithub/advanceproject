@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "advanceproject"
 include(":app")
- 
+include("module:login")

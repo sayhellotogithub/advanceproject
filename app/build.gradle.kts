@@ -58,6 +58,7 @@ dependencies {
     testImplementation(libs.bundles.unit.tests)
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.bundles.instrumented.tests)
+    api("module:login")
 
     debugImplementation(libs.bundles.compose.debug)
 }

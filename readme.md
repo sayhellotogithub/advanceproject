@@ -7,6 +7,7 @@
  *使用Rxjava　来进行数据获取
  *Kotlin
  Material3
+ * 使用libs.versions.toml来管理依赖
 
  功能，简单的登录功能
 
