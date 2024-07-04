@@ -55,6 +55,7 @@ dependencies {
     implementation(composeBom)
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.rxjava3)
     testImplementation(libs.bundles.unit.tests)
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.bundles.instrumented.tests)
