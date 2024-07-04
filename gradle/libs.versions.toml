@@ -11,6 +11,7 @@ lifecycle-runtime-ktx = "2.6.2"
 rxjava = "3.1.8"
 rxkotlin ="3.0.1"
 rxandroid ="3.0.2"
+rxrelay ="3.0.1"
 
 # Instrumented tests versions
 androidx-junit = "1.1.5"
@@ -47,6 +48,8 @@ io-reactivex-rxjava3-rxjava = {group="io.reactivex.rxjava3",name="rxjava",versio
 io-reactivex-rxjava3-rxkotlin = {group="io.reactivex.rxjava3",name="rxkotlin",version.ref="rxkotlin"}
 #### io.reactivex.rxjava3:rxandroid:3.0.2
 io-reactivex-rxjava3-rxandroid= {group="io.reactivex.rxjava3",name="rxandroid",version.ref="rxandroid"}
+#### com.jakewharton.rxrelay3:rxrelay:3.0.1
+com-jakewharton-rxrelay3 ={group="com.jakewharton.rxrelay3",name="rxrelay",version.ref="rxrelay"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
@@ -59,5 +62,5 @@ compose = ["androidx-compose-material3", "androidx-compose-ui-ui-graphics", "and
 compose-debug = ["androidx-compose-ui-ui-tooling", "androidx-compose-ui-ui-test-manifest"]
 instrumented-tests = ["androidx-junit", "androidx-espresso-core", "androidx-compose-ui-ui-test-junit4"]
 unit-tests = ["junit"]
-rxjava3 =["io-reactivex-rxjava3-rxandroid","io-reactivex-rxjava3-rxkotlin","io-reactivex-rxjava3-rxjava"]
+rxjava3 =["io-reactivex-rxjava3-rxandroid","io-reactivex-rxjava3-rxkotlin","io-reactivex-rxjava3-rxjava","com-jakewharton-rxrelay3"]
 
