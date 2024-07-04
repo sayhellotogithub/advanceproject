@@ -51,6 +51,7 @@ io-reactivex-rxjava3-rxandroid= {group="io.reactivex.rxjava3",name="rxandroid",v
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 
 [bundles]
 androidx = ["androidx-activity-compose", "androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]

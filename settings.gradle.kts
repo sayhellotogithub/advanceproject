@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "advanceproject"
 include(":app")
 include("module:login")
+include("common:net:rxjava")
