@@ -60,6 +60,7 @@ dependencies {
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.bundles.instrumented.tests)
     api("module:login")
+    api(":module:photo")
 
     debugImplementation(libs.bundles.compose.debug)
 }
