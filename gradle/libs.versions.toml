@@ -12,6 +12,7 @@ rxjava = "3.1.8"
 rxkotlin ="3.0.1"
 rxandroid ="3.0.2"
 rxrelay ="3.0.1"
+detekt = "1.23.6"
 
 # Instrumented tests versions
 androidx-junit = "1.1.5"
@@ -42,14 +43,17 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "a
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-#### io.reactivex.rxjava3:rxjava:3.x.y"
+# io.reactivex.rxjava3:rxjava:3.x.y"
 io-reactivex-rxjava3-rxjava = {group="io.reactivex.rxjava3",name="rxjava",version.ref="rxjava"}
 #### io.reactivex.rxjava3:rxkotlin:3.x.y"
 io-reactivex-rxjava3-rxkotlin = {group="io.reactivex.rxjava3",name="rxkotlin",version.ref="rxkotlin"}
-#### io.reactivex.rxjava3:rxandroid:3.0.2
+# io.reactivex.rxjava3:rxandroid:3.0.2
 io-reactivex-rxjava3-rxandroid= {group="io.reactivex.rxjava3",name="rxandroid",version.ref="rxandroid"}
-#### com.jakewharton.rxrelay3:rxrelay:3.0.1
+# com.jakewharton.rxrelay3:rxrelay:3.0.1
 com-jakewharton-rxrelay3 ={group="com.jakewharton.rxrelay3",name="rxrelay",version.ref="rxrelay"}
+# Detekt plugins
+detekt-formating = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+detekt-rules = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules", version.ref = "detekt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
