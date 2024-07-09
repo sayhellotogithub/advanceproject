@@ -1,5 +1,7 @@
 pluginManagement {
+
     repositories {
+        includeBuild("build-logic")
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -18,3 +20,4 @@ include(":app")
 include("module:login")
 include("common:net:rxjava")
 include(":module:photo")
+

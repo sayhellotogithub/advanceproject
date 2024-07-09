@@ -54,11 +54,16 @@ com-jakewharton-rxrelay3 ={group="com.jakewharton.rxrelay3",name="rxrelay",versi
 # Detekt plugins
 detekt-formating = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 detekt-rules = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules", version.ref = "detekt" }
+# Dependencies of the included build-logic
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle-plugin" }
+kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-androidLibrary = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 
 [bundles]
 androidx = ["androidx-activity-compose", "androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
