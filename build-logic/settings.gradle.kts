@@ -1,8 +1,4 @@
 dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
 
     versionCatalogs {
         create("libs") {
@@ -12,4 +8,3 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "build-logic"
-include(":convention")

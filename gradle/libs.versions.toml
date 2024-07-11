@@ -1,13 +1,13 @@
 [versions]
 # Plugin versions
-android-gradle-plugin ="8.2.0"
+android-gradle-plugin ="8.5.0"
 kotlin = "1.9.10"
 
 # Dependency versions
-activity-compose = "1.8.2"
-androidx-compose-bom = "2023.10.00"
-core-ktx = "1.12.0"
-lifecycle-runtime-ktx = "2.6.2"
+activity-compose = "1.9.0"
+androidx-compose-bom = "2024.06.00"
+core-ktx = "1.13.1"
+lifecycle-runtime-ktx = "2.8.3"
 rxjava = "3.1.8"
 rxkotlin ="3.0.1"
 rxandroid ="3.0.2"
@@ -15,13 +15,13 @@ rxrelay ="3.0.1"
 detekt = "1.23.6"
 
 # Instrumented tests versions
-androidx-junit = "1.1.5"
-espresso-core = "3.5.1"
+androidx-junit = "1.2.1"
+espresso-core = "3.6.1"
 
 # Unit tests versions
 junit = "4.13.2"
-appcompat = "1.6.1"
-material = "1.11.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
@@ -55,8 +55,8 @@ com-jakewharton-rxrelay3 ={group="com.jakewharton.rxrelay3",name="rxrelay",versi
 detekt-formating = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 detekt-rules = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules", version.ref = "detekt" }
 # Dependencies of the included build-logic
-android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle-plugin" }
-kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle-plugin" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 
 

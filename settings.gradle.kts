@@ -17,7 +17,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "advanceproject"
 include(":app")
-include("module:login")
-include("common:net:rxjava")
-include(":module:photo")
+include(":feature:login")
+include(":common:net:rxjava")
+include(":feature:photo")
 

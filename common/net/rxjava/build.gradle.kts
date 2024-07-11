@@ -1,6 +1,6 @@
 
 plugins {
-   id("iblogstreet.android.library")
+   id("iblog-library-plugin")
 }
 
 android {

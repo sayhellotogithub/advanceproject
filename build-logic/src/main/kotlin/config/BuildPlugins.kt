@@ -1,8 +1,8 @@
-package com.iblogstreet.dependency.utils
+package config
 
 /**
  * @author junwang
- * @date 2024/07/09 22:20
+ * @date 2024/07/12 1:04
  */
 object BuildPlugins {
 
