@@ -1,22 +1,19 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("iblog-app-plugin")
+    alias(libs.plugins.iblog.android.feature)
+    alias(libs.plugins.iblog.android.library.jacoco)
+    alias(libs.plugins.iblog.android.library.compose)
+    alias(libs.plugins.iblog.hilt)
 }
 
 android {
     namespace = "com.iblogstreet.photo"
-
-
 }
 
 dependencies {
-    val composeBom = platform(libs.androidx.compose.bom)
-    implementation(composeBom)
-    implementation(libs.bundles.androidx)
-    implementation(libs.bundles.compose)
-    implementation(libs.bundles.rxjava3)
-    testImplementation(libs.bundles.unit.tests)
-    androidTestImplementation(composeBom)
-    androidTestImplementation(libs.bundles.instrumented.tests)
-    debugImplementation(libs.bundles.compose.debug)
+
+    implementation(libs.androidx.appcompat)
+//    testImplementation(projects.core.testing)
+    compileOnly(projects.feature.loginExpose)
+
+    androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 }

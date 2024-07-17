@@ -32,3 +32,8 @@ google-services.json
 # Android Profiling
 *.hprof
 
+**/build/
+*_api/
+*_expose/
+app/pro/release/app-pro-release.apk
+app/pro/release/output-metadata.json

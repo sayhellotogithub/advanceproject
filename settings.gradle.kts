@@ -12,12 +12,21 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
-rootProject.name = "advanceproject"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+apply(from = "$rootDir/gradle/expose/expose.gradle.kts")
+val includeWithExpose: (projectPaths: String) -> Unit by extra
+val includeWithJavaExpose: (projectPaths: String) -> Unit by extra
+
+rootProject.name = "advance"
 include(":app")
-include(":feature:login")
-include(":common:net:rxjava")
-include(":feature:photo")
+includeWithExpose(":feature:login")
+//include(":common:net:rxjava")
+includeWithExpose(":feature:photo")
+
+include(":core:designsystem")
 
