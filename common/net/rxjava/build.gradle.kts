@@ -1,6 +1,6 @@
 
 plugins {
-   id("iblog-library-plugin")
+    alias(libs.plugins.iblog.android.library)
 }
 
 android {
@@ -11,10 +11,13 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.bundles.rxjava3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.androidx.compose.ui.test)
+    testImplementation(libs.androidx.compose.ui.testManifest)
+
+
+    testImplementation(libs.hilt.android.testing)
+    testImplementation(libs.robolectric)
+
+    androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 }

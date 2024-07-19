@@ -38,6 +38,7 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.feature.photo)
     implementation(projects.feature.login)
+    implementation(projects.common.util)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3.adaptive)

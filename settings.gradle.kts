@@ -25,8 +25,9 @@ val includeWithJavaExpose: (projectPaths: String) -> Unit by extra
 rootProject.name = "advance"
 include(":app")
 includeWithExpose(":feature:login")
-//include(":common:net:rxjava")
+include(":common:net:rxjava")
 includeWithExpose(":feature:photo")
 
 include(":core:designsystem")
 
+include(":common:util")

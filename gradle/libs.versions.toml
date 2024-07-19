@@ -61,8 +61,21 @@ truth = "1.4.2"
 turbine = "1.1.0"
 core = "1.13.1"
 
+rxjava = "3.1.8"
+rxkotlin ="3.0.1"
+rxandroid ="3.0.2"
+rxrelay ="3.0.1"
+kotlinVersion = "1.9.0"
+junit = "1.2.1"
+material = "1.12.0"
+
+kotlinLoggingJvm="1.5.4"
+
+
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
+rxjava3 =["io-reactivex-rxjava3-rxandroid","io-reactivex-rxjava3-rxkotlin","io-reactivex-rxjava3-rxjava","com-jakewharton-rxrelay3"]
+instrumented-tests = ["androidx-test-runner", "androidx-test-espresso-core"]
 
 [libraries]
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
@@ -162,6 +175,20 @@ ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devto
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
 
+# io.reactivex.rxjava3:rxjava:3.x.y"
+io-reactivex-rxjava3-rxjava = {group="io.reactivex.rxjava3",name="rxjava",version.ref="rxjava"}
+#### io.reactivex.rxjava3:rxkotlin:3.x.y"
+io-reactivex-rxjava3-rxkotlin = {group="io.reactivex.rxjava3",name="rxkotlin",version.ref="rxkotlin"}
+# io.reactivex.rxjava3:rxandroid:3.0.2
+io-reactivex-rxjava3-rxandroid= {group="io.reactivex.rxjava3",name="rxandroid",version.ref="rxandroid"}
+# com.jakewharton.rxrelay3:rxrelay:3.0.1
+com-jakewharton-rxrelay3 ={group="com.jakewharton.rxrelay3",name="rxrelay",version.ref="rxrelay"}
+junit = { group = "junit", name = "junit", version.ref = "junit4" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+kotlin-logging-jvm= {group="io.github.oshai",name="kotlin-logging-jvm",version.ref="kotlinLoggingJvm"}
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -197,3 +224,4 @@ iblog-android-room = { id = "iblog.android.room", version = "unspecified" }
 iblog-android-test = { id = "iblog.android.test", version = "unspecified" }
 iblog-hilt = { id = "iblog.hilt", version = "unspecified" }
 iblog-jvm-library = { id = "iblog.jvm.library", version = "unspecified" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }

@@ -12,8 +12,12 @@ android {
 dependencies {
 
     implementation(libs.androidx.appcompat)
-//    testImplementation(projects.core.testing)
+//    testImplementation(projects.core.testing)\
+    implementation(libs.bundles.rxjava3)
     compileOnly(projects.feature.loginExpose)
+
+
+
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 }
