@@ -15,7 +15,7 @@ dependencies {
 //    testImplementation(projects.core.testing)\
     implementation(libs.bundles.rxjava3)
     compileOnly(projects.feature.loginExpose)
-
+    api(libs.kotlin.logging)
 
 
 

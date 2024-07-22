@@ -3,11 +3,12 @@ package com.iblogstreet.photo.ui.screen
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.util.Log
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.github.oshai.kotlinlogging.KLogger
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -49,7 +50,8 @@ class SharedViewModel : ViewModel() {
         selectedPhotos
             .doOnComplete {
 
-                Log.v("SharedViewModel", "Completed selecting photos")
+
+//                Log.v("SharedViewModel", "Completed selecting photos")
             }
             .subscribe { photo ->
                 imagesSubject.value?.add(photo)

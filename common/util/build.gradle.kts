@@ -13,8 +13,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-//    implementation(libs.kotlin.logging.jvm)
-    implementation ("io.github.oshai:kotlin-logging-jvm:5.1.4")
+    api(libs.kotlin.logging)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
