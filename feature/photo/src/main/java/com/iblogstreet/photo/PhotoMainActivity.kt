@@ -64,6 +64,11 @@ class PhotoMainActivity : ComponentActivity() {
                         }) {
                             Text("to Login")
                         }
+                        Button(onClick = {
+
+                        }) {
+                            Text("to PhotoOp")
+                        }
                     }
 
 

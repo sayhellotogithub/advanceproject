@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
 //    testImplementation(projects.core.testing)\
     implementation(libs.bundles.rxjava3)
+    implementation(libs.androidx.constraintlayout)
     compileOnly(projects.feature.loginExpose)
     api(libs.kotlin.logging)
 
