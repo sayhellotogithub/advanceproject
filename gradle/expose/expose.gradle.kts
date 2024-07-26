@@ -35,6 +35,7 @@ extra["includeWithJavaExpose"] = { module: String ->
     includeWithExpose(module, isJava = true, DEFAULT_EXPOSE_DIR_NAME, DEFAULT_CONDITION)
 }
 
+
 private val MODULE_EXPOSE_TAG = "expose"
 private val DEFAULT_EXPOSE_DIR_NAME = "expose"
 private val SCRIPT_DIR = "$rootDir/gradle/expose/"

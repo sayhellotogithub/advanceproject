@@ -25,6 +25,7 @@ dependencies {
 
     implementation(libs.coil.kt.compose)
     implementation(libs.androidx.core)
+    implementation(libs.androidx.ui.text.google.fonts)
 
     testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.androidx.compose.ui.testManifest)

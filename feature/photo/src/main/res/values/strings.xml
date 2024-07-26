@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_photo_add">ADD</string>
+    <string name="feature_photo_clear">CLEAR</string>
+    <string name="feature_photo_save">SAVE</string>
+</resources>
