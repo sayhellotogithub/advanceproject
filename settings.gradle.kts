@@ -31,3 +31,4 @@ includeWithExpose(":feature:photo")
 include(":core:designsystem")
 
 include(":common:util")
+include(":common:mvp")
