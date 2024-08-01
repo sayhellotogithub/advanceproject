@@ -15,7 +15,7 @@ import org.junit.Test
 class RxjavaFilteringOperatorsUnitTest {
 
     @Test
-    fun IgnoringOperatorsTest() {
+    fun ignoringOperatorsTest() {
         //ignoreElements is useful when you only want to be notified when an observable has terminated, via a complete or error event.
         val disposable = CompositeDisposable()
         val subscription = PublishSubject.create<String>()
