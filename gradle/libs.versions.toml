@@ -73,6 +73,7 @@ kotlinLoggingJvm="5.1.4"
 slf4jSimple="2.0.3"
 constraintlayout = "1.0.1"
 uiTextGoogleFonts = "1.6.8"
+lifecycleRuntimeKtx = "2.8.4"
 
 
 [bundles]
@@ -193,6 +194,9 @@ kotlin-logging= {group="io.github.oshai",name="kotlin-logging-jvm",version.ref="
 org-slf4j-simple= {group="org.slf4j",name="slf4j-simple",version.ref="slf4jSimple"}
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayout" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 
 
 [plugins]

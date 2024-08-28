@@ -3,7 +3,8 @@
 
     <application>
         <activity
-            android:name=".PhotoMainActivity"
+            android:name=".RxjavaMainActivity"
             android:theme="@style/Theme.AppCompat" />
+        <activity android:name=".ui.time.TimeActivity"/>
     </application>
 </manifest>

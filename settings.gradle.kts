@@ -32,3 +32,4 @@ include(":core:designsystem")
 
 include(":common:util")
 include(":common:mvp")
+include(":feature:rxjavatest")
