@@ -1,1 +1,0 @@
-https://dy-1.smjcdh.com/api/v1/client/subscribe?token=8686d53942e2af66f00ddb68d9c8e3f5
