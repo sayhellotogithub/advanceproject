@@ -19,18 +19,7 @@ class AnonymousUnitTest {
             }
 
         }
-        val checker = object : ThresholdChecker {
-            override val lower: Int
-                get() = 7
-            override val upper: Int
-                get() = 10
 
-            override fun isLit(value: Int): Boolean {
-            }
-
-            override fun tooQuiet(value: Int): Boolean {
-            }
-        }
     }
 
     interface Counts {
