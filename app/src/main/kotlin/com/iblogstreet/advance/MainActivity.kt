@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -33,8 +32,10 @@ import androidx.compose.material.icons.filled.Spa
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
@@ -47,6 +48,8 @@ import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -56,6 +59,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.iblogstreet.advance.model.BottomMenuItem
 import com.iblogstreet.advance.model.EntryType
 import com.iblogstreet.advance.model.FunctionEntryModel
 import com.iblogstreet.advance.util.data_util
@@ -82,37 +86,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val windowSizeClass = calculateWindowSizeClass(this)
-            KotlinLogging.logger("1111 {${windowSizeClass.widthSizeClass}}")
             MainPage(windowSize = windowSizeClass)
 
-//            AdvanceprojectTheme {
-            // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
-//                ) {
-
-//                    Column(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .background(color = Color.Cyan),
-//                        verticalArrangement = Arrangement.Center,
-//                        horizontalAlignment = Alignment.CenterHorizontally
-//                    ) {
-//                        Button(onClick = {
-//                            photoExpose.startPhotoActivity(this@MainActivity)
-//                        }) {
-//                            Text("Photo")
-//                        }
-//                        Button(onClick = {
-//                            loginExpose.startLoginActivity(this@MainActivity)
-//                        }) {
-//                            Text("Login")
-//                        }
-//                    }
-
-
-//                }
-//            }
         }
     }
 }
@@ -246,39 +221,54 @@ fun ItemSection(
 }
 
 @Composable
-fun BottomNavBar(modifier: Modifier = Modifier) {
+fun BottomNavigationBar(modifier: Modifier = Modifier) {
+    val items = listOf(
+        BottomMenuItem(
+            name = stringResource(R.string.bottom_navigation_home),
+            icon = Icons.Default.Spa
+        ),
+        BottomMenuItem(
+            name = stringResource(R.string.bottom_navigation_mine),
+            icon = Icons.Default.AccountCircle
+        )
+    )
+    val selectedMenuItem = remember { mutableStateOf(items[0]) }
+
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        containerColor = colorScheme.surfaceVariant,
         modifier = modifier
     ) {
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Spa,
-                    contentDescription = null
-                )
-            },
-            label = {
-                Text(stringResource(R.string.bottom_navigation_home))
-            },
-            selected = true,
-            onClick = {}
-        )
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.AccountCircle,
-                    contentDescription = null
-                )
-            },
-            label = {
-                Text(stringResource(R.string.bottom_navigation_mine))
-            },
-            selected = false,
-            onClick = {}
-        )
+
+        items.forEach { screen ->
+            NavigationBarItem(
+                icon = {
+                    Icon(
+                        imageVector = screen.icon,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(screen.name)
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = Color.Red,
+                    selectedTextColor = Color.Red,
+                    indicatorColor = Color.LightGray,
+                    unselectedIconColor = Color.Gray,
+                    unselectedTextColor = Color.DarkGray
+                ),
+                selected = screen.name == selectedMenuItem.value.name,
+                onClick = {
+                    selectedMenuItem.value = screen
+
+                }
+            )
+
+        }
+
     }
 }
+
 
 @Composable
 private fun HorizontalNavBar(modifier: Modifier = Modifier) {
@@ -325,7 +315,7 @@ private fun HorizontalNavBar(modifier: Modifier = Modifier) {
 @Composable
 fun AppPortraitScape() {
     AppTheme {
-        Scaffold(bottomBar = { BottomNavBar() }) { padding ->
+        Scaffold(bottomBar = { BottomNavigationBar() }) { padding ->
             MainBodyContent(modifier = Modifier.padding(padding))
         }
 

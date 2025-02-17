@@ -1,5 +1,7 @@
 package com.iblogstreet.advance.model
 
+import androidx.compose.ui.graphics.vector.ImageVector
+
 /**
  * @author junwang
  * @date 2024/07/25 0:04
@@ -13,3 +15,4 @@ enum class EntryType {
     LOGIN,
     PHOTO
 }
+data class BottomMenuItem(val name:String,val icon: ImageVector)
