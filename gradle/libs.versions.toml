@@ -62,23 +62,24 @@ turbine = "1.1.0"
 core = "1.13.1"
 
 rxjava = "3.1.8"
-rxkotlin ="3.0.1"
-rxandroid ="3.0.2"
-rxrelay ="3.0.1"
+rxkotlin = "3.0.1"
+rxandroid = "3.0.2"
+rxrelay = "3.0.1"
 kotlinVersion = "1.9.0"
 junit = "1.2.1"
 material = "1.12.0"
 
-kotlinLoggingJvm="5.1.4"
-slf4jSimple="2.0.3"
+kotlinLoggingJvm = "5.1.4"
+slf4jSimple = "2.0.3"
 constraintlayout = "1.0.1"
 uiTextGoogleFonts = "1.6.8"
 lifecycleRuntimeKtx = "2.8.4"
+mockitoCore = "3.12.0"
 
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
-rxjava3 =["io-reactivex-rxjava3-rxandroid","io-reactivex-rxjava3-rxkotlin","io-reactivex-rxjava3-rxjava","com-jakewharton-rxrelay3"]
+rxjava3 = ["io-reactivex-rxjava3-rxandroid", "io-reactivex-rxjava3-rxkotlin", "io-reactivex-rxjava3-rxjava", "com-jakewharton-rxrelay3"]
 instrumented-tests = ["androidx-test-runner", "androidx-test-espresso-core"]
 
 [libraries]
@@ -180,30 +181,34 @@ room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", vers
 androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
 
 # io.reactivex.rxjava3:rxjava:3.x.y"
-io-reactivex-rxjava3-rxjava = {group="io.reactivex.rxjava3",name="rxjava",version.ref="rxjava"}
+io-reactivex-rxjava3-rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 #### io.reactivex.rxjava3:rxkotlin:3.x.y"
-io-reactivex-rxjava3-rxkotlin = {group="io.reactivex.rxjava3",name="rxkotlin",version.ref="rxkotlin"}
+io-reactivex-rxjava3-rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "rxkotlin" }
 # io.reactivex.rxjava3:rxandroid:3.0.2
-io-reactivex-rxjava3-rxandroid= {group="io.reactivex.rxjava3",name="rxandroid",version.ref="rxandroid"}
+io-reactivex-rxjava3-rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
 # com.jakewharton.rxrelay3:rxrelay:3.0.1
-com-jakewharton-rxrelay3 ={group="com.jakewharton.rxrelay3",name="rxrelay",version.ref="rxrelay"}
+com-jakewharton-rxrelay3 = { group = "com.jakewharton.rxrelay3", name = "rxrelay", version.ref = "rxrelay" }
 junit = { group = "junit", name = "junit", version.ref = "junit4" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-kotlin-logging= {group="io.github.oshai",name="kotlin-logging-jvm",version.ref="kotlinLoggingJvm"}
-org-slf4j-simple= {group="org.slf4j",name="slf4j-simple",version.ref="slf4jSimple"}
+kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlinLoggingJvm" }
+org-slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4jSimple" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayout" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 
+#### testImplementation 'org.mockito:mockito-core:2.22.0'
+org-mockito-mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
+#### org.mockito:mockito-inline
+org-mockito-mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoCore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
-baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidxMacroBenchmark"}
+baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidxMacroBenchmark" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
