@@ -5,14 +5,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
@@ -26,10 +31,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Icecream
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Spa
 import androidx.compose.material3.Button
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
@@ -48,17 +54,22 @@ import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.iblogstreet.advance.model.BottomMenuItem
 import com.iblogstreet.advance.model.EntryType
 import com.iblogstreet.advance.model.FunctionEntryModel
@@ -70,6 +81,7 @@ import com.iblogstreet.photo.expose.PhotoExpose
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.oshai.kotlinlogging.KotlinLogging
 import javax.inject.Inject
+import  androidx.navigation.compose.*
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -221,47 +233,103 @@ fun ItemSection(
 }
 
 @Composable
-fun BottomNavigationBar(modifier: Modifier = Modifier) {
+fun BottomNavigationBar(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    selectedItem: MutableIntState
+) {
     val items = listOf(
         BottomMenuItem(
-            name = stringResource(R.string.bottom_navigation_home),
-            icon = Icons.Default.Spa
+            title = stringResource(R.string.bottom_navigation_home),
+            selectedIcon = ImageVector.vectorResource(R.drawable.icon_home_selected),
+            defaultIcon = ImageVector.vectorResource(R.drawable.icon_home_default),
+            route = "home"
         ),
         BottomMenuItem(
-            name = stringResource(R.string.bottom_navigation_mine),
-            icon = Icons.Default.AccountCircle
+            title = "activity",
+            selectedIcon = ImageVector.vectorResource(R.drawable.icon_activity_default),
+            defaultIcon = ImageVector.vectorResource(R.drawable.icon_activity_default),
+            route = "activity"
+        ),
+        BottomMenuItem(
+            title = "search",
+            selectedIcon = Icons.Default.Search,
+            defaultIcon = Icons.Default.Search,
+            route = "search"
+        ),
+        BottomMenuItem(
+            title = "camera",
+            selectedIcon = ImageVector.vectorResource(R.drawable.icon_camera_selected),
+            defaultIcon = ImageVector.vectorResource(R.drawable.icon_activity_default),
+            route = "camera"
+        ),
+        BottomMenuItem(
+            title = stringResource(R.string.bottom_navigation_mine),
+            selectedIcon = ImageVector.vectorResource(R.drawable.icon_profile_default),
+            defaultIcon = ImageVector.vectorResource(R.drawable.icon_profile_default),
+            route = "profile"
         )
+
     )
-    val selectedMenuItem = remember { mutableStateOf(items[0]) }
 
-    NavigationBar(
-        containerColor = colorScheme.surfaceVariant,
-        modifier = modifier
-    ) {
+    Box(modifier = Modifier.height(56.dp)) {
 
-        items.forEach { screen ->
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = screen.icon,
-                        contentDescription = null
+
+        NavigationBar(
+            containerColor = Color.White,
+            modifier = modifier
+        ) {
+
+            items.forEachIndexed { index, item ->
+                if (index == 2) {
+                    Spacer(Modifier.weight(1f))
+
+
+                } else {
+
+
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                if (selectedItem.intValue == index) item.selectedIcon else item.defaultIcon,
+                                item.title
+                            )
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+//                        selectedIconColor = Color.Red,
+                            indicatorColor = Color.White,
+                            unselectedIconColor = Color.Gray,
+                        ),
+                        selected = selectedItem.intValue == index,
+                        onClick = {
+                            selectedItem.intValue = index
+                            navController.navigate(item.route)
+                        }
                     )
-                },
-                label = {
-                    Text(screen.name)
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color.Red,
-                    selectedTextColor = Color.Red,
-                    indicatorColor = Color.LightGray,
-                    unselectedIconColor = Color.Gray,
-                    unselectedTextColor = Color.DarkGray
-                ),
-                selected = screen.name == selectedMenuItem.value.name,
-                onClick = {
-                    selectedMenuItem.value = screen
 
                 }
+            }
+
+        }
+
+
+        FloatingActionButton(
+            onClick = {
+                selectedItem.intValue = 2
+                navController.navigate("search")
+            },
+            contentColor = if (selectedItem.intValue == 2) Color.Red else Color.White,
+            modifier = Modifier
+                .size(70.dp)
+                .align(Alignment.Center)
+                .offset(y = -20.dp)
+        ) {
+            Icon(
+               Icons.Default.Search,
+                contentDescription = "Search",
+                tint = Color.White,
+                modifier = Modifier
+                    .size(40.dp)
             )
 
         }
@@ -314,9 +382,65 @@ private fun HorizontalNavBar(modifier: Modifier = Modifier) {
 
 @Composable
 fun AppPortraitScape() {
+    val navController = rememberNavController()
+    val selectedItem = remember { mutableIntStateOf(0) }
     AppTheme {
-        Scaffold(bottomBar = { BottomNavigationBar() }) { padding ->
-            MainBodyContent(modifier = Modifier.padding(padding))
+        Scaffold(
+
+
+//            floatingActionButton = {
+//                FloatingActionButton(
+//                    onClick = {
+//                        selectedItem.value = 2
+//                        navController.navigate("search")
+//                    },
+//                    contentColor = if (selectedItem.value == 2) Color.Red else Color.White,
+//                    modifier = Modifier
+//                        .size(70.dp)
+//                        .offset(y = 60.dp)
+//
+//                ) {
+//                    Icon(
+//                        Icons.Default.Search,
+//                        contentDescription = "search",
+//                        tint = Color.White
+//                    )
+//                }
+//
+//
+//            },
+//            floatingActionButtonPosition = FabPosition.Center,
+            bottomBar = {
+                BottomNavigationBar(
+                    navController = navController,
+                    selectedItem = selectedItem
+                )
+            }) { padding ->
+            NavHost(
+                navController = navController,
+                startDestination = "home",
+                modifier = Modifier
+                    .padding(padding)
+
+            ) {
+                composable("home") {
+                    MainBodyContent(modifier = Modifier.padding(padding))
+                }
+                composable("activity") {
+                    ActivityScreen()
+                }
+                composable("search") {
+                    SearchScreen()
+                }
+                composable("camera") {
+                    CameraScreen()
+                }
+                composable("profile") {
+                    ProfileScreen()
+                }
+            }
+
+
         }
 
     }
@@ -336,6 +460,50 @@ fun MainBodyContent(modifier: Modifier = Modifier) {
             FunctionEntryGrid()
         }
         Spacer(Modifier.height(16.dp))
+    }
+}
+
+@Composable
+fun CameraScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+    ) {
+        Text(text = "👤 camera Screen")
+    }
+}
+
+@Composable
+fun ActivityScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+    ) {
+        Text(text = "👤 Activity Screen")
+    }
+}
+
+@Composable
+fun ProfileScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+    ) {
+        Text(text = "👤 Profile Screen")
+    }
+}
+
+@Composable
+fun SearchScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+    ) {
+        Text(text = "👤 Search Screen")
     }
 }
 

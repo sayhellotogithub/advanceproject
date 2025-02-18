@@ -7,12 +7,18 @@ import androidx.compose.ui.graphics.vector.ImageVector
  * @date 2024/07/25 0:04
  */
 class FunctionEntryModel(
-   val entryType: EntryType,
-   val title: String? = null
+    val entryType: EntryType,
+    val title: String? = null
 )
 
 enum class EntryType {
     LOGIN,
     PHOTO
 }
-data class BottomMenuItem(val name:String,val icon: ImageVector)
+
+data class BottomMenuItem(
+    val title: String,
+    val defaultIcon: ImageVector,
+    val selectedIcon: ImageVector,
+    val route:String
+)
