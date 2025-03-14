@@ -72,7 +72,7 @@ class _PasswordLoginPageState extends ConsumerState<PasswordLoginPage> {
       TitleWidget(
         rightTitle: AppLocalizations.of(context)!.auth_code_login,
         rightClick: () {
-          context.go(loginPath);
+          context.go(homePath);
         },
       ),
     );

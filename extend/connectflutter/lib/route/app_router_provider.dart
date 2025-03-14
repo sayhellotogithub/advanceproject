@@ -43,7 +43,6 @@ const String logoutPath = "/logout";
 final routerNotifier = RouterNotifier();
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final appStateManager = ref.watch(appStateManagerProvider);
   return GoRouter(
     initialLocation: '/',
     routes: [
@@ -101,16 +100,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: authenticationEmailPath,
         builder: (context, state) => AuthenticationEmailPage(),
       ),
-      // GoRoute(path: logoutPath,builder: (context,state)=>LogoutPage()),
+
     ],
     errorBuilder:
         (context, state) =>
             const Scaffold(body: Center(child: Text('Page not found'))),
     redirect: (context, state) {
-      if (!appStateManager.isInitialized) {
-        return null; // スプラッシュ画面などで制御したい場合
-      }
-      return appStateManager.isLoggedIn ? '/home' : '/login';
+      return null;
     },
     debugLogDiagnostics: true,
     observers: [routerNotifier],
