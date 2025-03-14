@@ -1,0 +1,60 @@
+// -------------------------------------------------------------------
+// Author: WANG JUN
+// Date: 2025/03/14
+// Description:
+// -------------------------------------------------------------------
+
+import 'package:flutter/material.dart';
+
+class CustomOffsetAnimation extends StatefulWidget {
+  final AnimationController controller;
+  final Widget child;
+
+  const CustomOffsetAnimation(
+      {Key? key, required this.controller, required this.child})
+      : super(key: key);
+
+  @override
+  _CustomOffsetAnimationState createState() => _CustomOffsetAnimationState();
+}
+
+class _CustomOffsetAnimationState extends State<CustomOffsetAnimation> {
+  late Tween<Offset> tweenOffset;
+  late Tween<double> tweenScale;
+
+  late Animation<double> animation;
+
+  @override
+  void initState() {
+    tweenOffset = Tween<Offset>(
+      begin: const Offset(0.0, 0.8),
+      end: Offset.zero,
+    );
+    tweenScale = Tween<double>(begin: 0.3, end: 1.0);
+    animation =
+        CurvedAnimation(parent: widget.controller, curve: Curves.decelerate);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      child: widget.child,
+      animation: widget.controller,
+      builder: (context, child) {
+        return FractionalTranslation(
+          translation: tweenOffset.evaluate(animation),
+          child: ClipRect(
+            child: Transform.scale(
+              scale: tweenScale.evaluate(animation),
+              child: Opacity(
+                child: child,
+                opacity: animation.value,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

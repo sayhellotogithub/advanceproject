@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>路径@3x</title>
+    <g id="修改" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="电子签名" transform="translate(-20.000000, -23.000000)">
+            <g id="编组" transform="translate(20.000000, 23.000000)">
+                <polygon id="路径" points="0 0 24 0 24 24 0 24"></polygon>
+                <polygon id="路径" fill="#FFFFFF" fill-rule="nonzero" points="7.828 11 20 11 20 13 7.828 13 13.192 18.364 11.778 19.778 4 12 11.778 4.222 13.192 5.636"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>路径@3x</title>
+    <g id="修改5-24" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-49.000000, -536.000000)">
+            <g id="编组-9" transform="translate(20.000000, 471.000000)">
+                <g id="编组-7" transform="translate(26.000000, 65.000000)">
+                    <g id="编组" transform="translate(3.000000, 0.000000)">
+                        <path d="M16,0 L34,0 C42.836556,-1.623249e-15 50,7.163444 50,16 L50,34 C50,42.836556 42.836556,50 34,50 L16,50 C7.163444,50 1.082166e-15,42.836556 0,34 L0,16 C-1.082166e-15,7.163444 7.163444,1.623249e-15 16,0 Z" id="路径" fill="#697FF3"></path>
+                        <path d="M33,35 L17,35 C16.4477153,35 16,34.5522847 16,34 L16,16 C16,15.4477153 16.4477153,15 17,15 L33,15 C33.5522847,15 34,15.4477153 34,16 L34,34 C34,34.5522847 33.5522847,35 33,35 Z M32,33 L32,17 L18,17 L18,33 L32,33 Z M21,20 L29,20 L29,22 L21,22 L21,20 Z M21,24 L29,24 L29,26 L21,26 L21,24 Z M21,28 L26,28 L26,30 L21,30 L21,28 Z" id="形状" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
