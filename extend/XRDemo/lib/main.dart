@@ -18,12 +18,14 @@ class MyApp extends StatelessWidget {
           ,
         )
           ,
-          body: ARViewWidget(),
+          body: const ARViewWidget(),
         ));
   }
 }
 
 class ARViewWidget extends StatefulWidget {
+  const ARViewWidget({super.key});
+
   @override
   _ARViewWidegetState createState() => _ARViewWidegetState();
 }
