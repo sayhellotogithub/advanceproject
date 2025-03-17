@@ -17,7 +17,6 @@ import '../page/open_account_step/electronic_signature_landscape_page.dart';
 import '../page/open_account_step/electronic_signature_page.dart';
 import '../page/open_account_step/open_account_introduce_page.dart';
 import '../page/open_account_step/upload_bank_page.dart';
-import '../provider/app_state_manager_provier.dart';
 import '../util/index.dart';
 import 'router_notifier.dart';
 
@@ -103,13 +102,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         (context, state) =>
             const Scaffold(body: Center(child: Text('Page not found'))),
     redirect: (context, state) {
+      if (state.matchedLocation == '/home') {
+        // 最後の画面に到達した場合の処理
+        AppLogger().debug('last page');
+      }
       return null;
-      // final isLoggedIn =
-      //     ref.read(appStateManagerProvider.notifier).state.isLoggedIn;
-      //
-      // // ログイン状態に応じてリダイレクト
-      // if (isLoggedIn) return homePath;
-      // return loginPath;
     },
     debugLogDiagnostics: true,
     observers: [routerNotifier],

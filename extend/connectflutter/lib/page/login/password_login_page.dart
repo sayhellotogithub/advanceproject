@@ -72,8 +72,7 @@ class _PasswordLoginPageState extends ConsumerState<PasswordLoginPage> {
       TitleWidget(
         rightTitle: AppLocalizations.of(context)!.auth_code_login,
         rightClick: () {
-          ref.read(appStateManagerProvider.notifier).loginSuccess();
-          context.go(homePath);
+          safeGoBack(context);
         },
       ),
     );
@@ -155,6 +154,7 @@ class _PasswordLoginPageState extends ConsumerState<PasswordLoginPage> {
           if (result.success == true) {
             TokenSharePref.saveRefreshToken(result.data?.refreshToken ?? "");
             TokenSharePref.saveUserToken(result.data?.userToken ?? "");
+            ref.read(appStateManagerProvider.notifier).loginSuccess();
             context.go(homePath);
           } else {
             showToastFunc?.call();

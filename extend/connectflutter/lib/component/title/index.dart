@@ -6,4 +6,3 @@
 
 export 'title_widget.dart';
 export 'common_title_widget.dart';
-export 'common_title_white_widget.dart';

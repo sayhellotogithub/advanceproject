@@ -25,6 +25,7 @@ class DimenUtil {
   static double get width16 => 16.w;
 
   static double get width20 => 20.w;
+  static double get width24 => 24.w;
 
   static double get width40 => 40.w;
 
@@ -52,6 +53,7 @@ class DimenUtil {
   static double get height18 => 18.h;
 
   static double get height20 => 20.h;
+  static double get height24 => 24.h;
 
   static double get height30 => 30.h;
 

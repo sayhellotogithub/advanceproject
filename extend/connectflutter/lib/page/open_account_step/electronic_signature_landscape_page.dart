@@ -5,7 +5,6 @@
 // -------------------------------------------------------------------
 
 import 'package:connectflutter/component/common_button_widget.dart';
-import 'package:connectflutter/component/title/index.dart';
 import 'package:connectflutter/component/title/title_util.dart';
 import 'package:connectflutter/component/white_board/index.dart';
 import 'package:connectflutter/l10n/index.dart';
@@ -16,6 +15,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../component/title/common_title_widget.dart';
 
 class ElectroniceSignatureLandscapePage extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _ElectroniceSignatureLandscapePageState
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     return PageUtil.buildLandScapeFullPage(
       _buildBody(),
-      CommonTitleWhiteWidget(
+      CommonTitleWidget(
         title: AppLocalizations.of(context)!.electronic_signature,
         rightWidget: TitleUitl.rightWidget(
           AppLocalizations.of(context)!.re_enter,

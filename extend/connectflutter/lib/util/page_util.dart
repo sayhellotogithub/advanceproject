@@ -22,8 +22,8 @@ class PageUtil {
     Widget body,
     Widget titleWidget, {
     Color appBarColor = Colors.white,
-    Color statusBarColor = Colors.white,
-    Brightness statusBarBrightness = Brightness.light,
+    Color statusBarColor = Colors.transparent,
+    Brightness statusBarBrightness = Brightness.dark,
   }) {
     _setStatusBarColor(statusBarColor, statusBarBrightness);
     return Scaffold(
@@ -35,7 +35,6 @@ class PageUtil {
           statusBarColor: statusBarColor,
           statusBarIconBrightness: statusBarBrightness,
         ),
-        // systemOverlayStyle: SystemUiOverlayStyle.light,
         // ステータスバーの色
         automaticallyImplyLeading: false,
         shadowColor: Colors.transparent,

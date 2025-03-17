@@ -7,7 +7,6 @@
 import 'package:connectflutter/component/title/title_util.dart';
 import 'package:connectflutter/util/font_size_util.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../route/app_router_provider.dart';
 

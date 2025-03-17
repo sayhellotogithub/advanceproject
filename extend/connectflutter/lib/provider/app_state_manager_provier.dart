@@ -51,7 +51,7 @@ class AppStateNotifier extends StateNotifier<AppStateManager> {
     await TokenSharePref.invalidate();
     // 直接新しい状態を設定
     state = AppStateManager();
-    ref.read(routerProvider).go(loginPath);
+    ref.read(routerProvider).replace(loginPath);
   }
 
   Future<void> initializeApp(WidgetRef ref) async {
