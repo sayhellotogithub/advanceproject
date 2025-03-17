@@ -5,8 +5,8 @@
 // -------------------------------------------------------------------
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../route/app_router_provider.dart';
@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
             ),
             child: InkWell(
               onTap: () {
+                AppLogger().debug("minePath:{$minePath}");
                 context.push(minePath);
               },
               child: SvgPicture.asset("assets/icon/icon_user_info.svg"),

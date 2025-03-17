@@ -11,3 +11,7 @@ dev_dependencies配制
 
 sometime error,please run this
 > flutter packages pub run build_runner build --delete-conflicting-outputs
+
+パフォーマンスを確認
+
+> flutter run --profile

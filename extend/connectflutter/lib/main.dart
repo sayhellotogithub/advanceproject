@@ -5,43 +5,35 @@
 // -------------------------------------------------------------------
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:connectflutter/provider/app_state_manager_provier.dart';
 import 'package:connectflutter/provider/locale_notifier.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/util/phone_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'l10n/index.dart';
 
 void main() async {
-  _setupLogging();
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding); // スプラッシュを保持
+
   // SharedPreferencesを初期化
   final sharedPreferences = await SharedPreferences.getInstance();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
-    _,
-  ) {
-    runApp(
-      ProviderScope(
-        overrides: [
-          sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-        ],
-        child: MyApp(),
-      ),
-    );
-  });
-}
-
-void _setupLogging() {
-  Logger.level = Level.all;
-  Logger.addLogListener((rec) {
-    print('${rec.level.name}: ${rec.time}: ${rec.message}');
-  });
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
@@ -52,12 +44,17 @@ class MyApp extends ConsumerWidget {
     PhoneUtil.initSystem();
     final router = ref.watch(routerProvider);
     final locale = ref.watch(localeProvider);
+    final initialization = ref
+        .watch(appStateManagerProvider.notifier)
+        .initializeApp(ref);
+
+    initialization.then((_) => FlutterNativeSplash.remove()); // 🔹 スプラッシュ削除
 
     return ScreenUtilInit(
       designSize: Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, ref) {
+      builder: (context, child) {
         return MaterialApp.router(
           routerConfig: router,
           builder: BotToastInit(),

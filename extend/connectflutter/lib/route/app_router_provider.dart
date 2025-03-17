@@ -5,7 +5,6 @@ import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
 import 'package:connectflutter/page/mine/mine_page.dart';
 import 'package:connectflutter/page/mine/setting_page.dart';
-import 'package:connectflutter/page/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -46,12 +45,11 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => SplashPage()),
+      GoRoute(path: '/', builder: (context, state) => PasswordLoginPage()),
       GoRoute(
         path: loginPath,
         builder: (context, state) => PasswordLoginPage(),
       ),
-      GoRoute(path: splashPath, builder: (context, state) => SplashPage()),
       GoRoute(path: homePath, builder: (context, state) => HomePage()),
       GoRoute(path: settingsPath, builder: (context, state) => SettingPage()),
       GoRoute(path: minePath, builder: (context, state) => MinePage()),
@@ -100,13 +98,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: authenticationEmailPath,
         builder: (context, state) => AuthenticationEmailPage(),
       ),
-
     ],
     errorBuilder:
         (context, state) =>
             const Scaffold(body: Center(child: Text('Page not found'))),
     redirect: (context, state) {
       return null;
+      // final isLoggedIn =
+      //     ref.read(appStateManagerProvider.notifier).state.isLoggedIn;
+      //
+      // // ログイン状態に応じてリダイレクト
+      // if (isLoggedIn) return homePath;
+      // return loginPath;
     },
     debugLogDiagnostics: true,
     observers: [routerNotifier],
@@ -120,6 +123,6 @@ void safeGoBack(BuildContext context) {
     context.pop();
   } else {
     // context.go('/');
-    BotToast.showText(text:"Can't go back");
+    BotToast.showText(text: "Can't go back");
   }
 }

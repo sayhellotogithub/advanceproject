@@ -86,8 +86,8 @@ class LocaleNotifier extends StateNotifier<Locale?> {
     switch (language) {
       case "en":
         return "English";
-      case "zh":
-        return "简体中文";
+      // case "zh":
+      //   return "简体中文";
       case "ja":
         return "日本語";
       default:

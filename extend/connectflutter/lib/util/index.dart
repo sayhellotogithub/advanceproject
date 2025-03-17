@@ -15,3 +15,4 @@ export 'package:bot_toast/bot_toast.dart';
 export 'toast/toast_util.dart';
 export 'regex_util.dart';
 export 'dimen_util.dart';
+export 'log_util.dart';

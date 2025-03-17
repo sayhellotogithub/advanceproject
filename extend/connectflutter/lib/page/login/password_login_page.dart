@@ -7,9 +7,9 @@
 import 'package:connectflutter/component/index.dart';
 import 'package:connectflutter/component/title/index.dart';
 import 'package:connectflutter/l10n/index.dart';
-import 'package:connectflutter/model/city_model.dart';
 import 'package:connectflutter/native_link/verify_dialog.dart';
 import 'package:connectflutter/net/api_service_provider.dart';
+import 'package:connectflutter/provider/app_state_manager_provier.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/share_pref/token_share_pref.dart';
 import 'package:connectflutter/theme/theme_util.dart';
@@ -72,6 +72,7 @@ class _PasswordLoginPageState extends ConsumerState<PasswordLoginPage> {
       TitleWidget(
         rightTitle: AppLocalizations.of(context)!.auth_code_login,
         rightClick: () {
+          ref.read(appStateManagerProvider.notifier).loginSuccess();
           context.go(homePath);
         },
       ),
