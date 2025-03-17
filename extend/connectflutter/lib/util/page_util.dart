@@ -69,6 +69,8 @@ class PageUtil {
     );
   }
 
+
+
   // ステータスバーの色を変更（Dart 3.7対応）
   static void _setStatusBarColor(Color color, Brightness brightness) {
     if (Platform.isAndroid || Platform.isIOS) {
