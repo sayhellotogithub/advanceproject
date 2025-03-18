@@ -20,10 +20,12 @@ class PageUtil {
 
   static Widget buildPage(
     Widget body,
-    Widget titleWidget, {
+    Widget? titleWidget, {
+
     Color appBarColor = Colors.white,
     Color statusBarColor = Colors.transparent,
     Brightness statusBarBrightness = Brightness.dark,
+    Widget? bottomNavigationBar = null,
   }) {
     _setStatusBarColor(statusBarColor, statusBarBrightness);
     return Scaffold(
@@ -41,14 +43,17 @@ class PageUtil {
         title: titleWidget,
       ),
       body: SafeArea(child: body),
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 
   static buildLandScapeFullPage(
     Widget body,
-    Widget titleWidget, {
+    Widget? titleWidget, {
+
     Color statusBarColor = Colors.white,
     Brightness statusBarBrightness = Brightness.light,
+    Widget? bottomNavigationBar,
   }) {
     _setStatusBarColor(statusBarColor, statusBarBrightness);
 
@@ -65,10 +70,26 @@ class PageUtil {
         title: titleWidget,
       ),
       body: SafeArea(child: body),
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 
+  static Widget buildPageWithNoAppBar(
+    Widget body, {
 
+    Color appBarColor = Colors.white,
+    Color statusBarColor = Colors.transparent,
+    Brightness statusBarBrightness = Brightness.dark,
+    Widget? bottomNavigationBar = null,
+  }) {
+    _setStatusBarColor(statusBarColor, statusBarBrightness);
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      // ステータスバーの色
+      body: SafeArea(child: body),
+      bottomNavigationBar: bottomNavigationBar,
+    );
+  }
 
   // ステータスバーの色を変更（Dart 3.7対応）
   static void _setStatusBarColor(Color color, Brightness brightness) {

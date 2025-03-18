@@ -1,5 +1,4 @@
 // 路由状态的Provider
-import 'package:connectflutter/page/home_page.dart';
 import 'package:connectflutter/page/login/auth_code_page.dart';
 import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
@@ -9,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../page/account_main_page.dart';
+import '../page/home_page.dart';
 import '../page/login/password_login_page.dart';
 import '../page/mine/set_language_page_new.dart';
 import '../page/open_account_step/authentication_email_page.dart';
@@ -23,6 +24,7 @@ import 'router_notifier.dart';
 const String splashPath = '/splash';
 const String loginPath = '/login';
 const String homePath = "/home";
+const String accountMainPage="/accountMainPage";
 const String settingsPath = '/settings';
 const String minePath = "/mine";
 const String setLanguagePath = "/setLanguage";
@@ -50,6 +52,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => PasswordLoginPage(),
       ),
       GoRoute(path: homePath, builder: (context, state) => HomePage()),
+      GoRoute(path: accountMainPage, builder: (context, state) => AccountMainPage()),
       GoRoute(path: settingsPath, builder: (context, state) => SettingPage()),
       GoRoute(path: minePath, builder: (context, state) => MinePage()),
       GoRoute(

@@ -74,5 +74,8 @@
   "next_step_authentication_email": "次のステップ、メール認証",
   "sms_code": "SMS認証コード",
   "please_fill_phone": "電話番号を入力してください",
-  "authen_email": "メール認証"
+  "authen_email": "メール認証",
+  "bottom_btn_home": "ホーム",
+  "bottom_btn_widgets": "ウィジェット",
+  "bottom_btn_my_page": "マイページ"
 }

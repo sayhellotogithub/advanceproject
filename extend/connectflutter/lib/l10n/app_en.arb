@@ -74,5 +74,8 @@
     "next_step_authentication_email": "Next step, email authentication",
     "sms_code": "SMS verification code",
     "please_fill_phone": "Please enter phone number",
-    "authen_email": "Email authentication"
+    "authen_email": "Email authentication",
+    "bottom_btn_home": "Home",
+    "bottom_btn_widgets": "Widgets",
+    "bottom_btn_my_page": "MyPage"
 }

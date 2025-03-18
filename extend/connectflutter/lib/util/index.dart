@@ -16,3 +16,5 @@ export 'toast/toast_util.dart';
 export 'regex_util.dart';
 export 'dimen_util.dart';
 export 'log_util.dart';
+export 'widget_util.dart';
+export 'url_util.dart';
