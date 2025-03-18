@@ -4,6 +4,8 @@
 // Description:
 // -------------------------------------------------------------------
 
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 
 class PhoneUtil {
@@ -12,10 +14,19 @@ class PhoneUtil {
 
   static void initSystem() {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    deviceInfo.androidInfo
-        .then((androidInfo) => {systemModel = androidInfo.model});
+    if (Platform.isMacOS) {
+      deviceInfo.iosInfo.then((iosInfo) {
+        systemModel = iosInfo.model ?? 'Unknown iOS Model';
+        systemVersion = iosInfo.systemVersion ?? 'Unknown iOS Version';
+      });
+    } else if (Platform.isAndroid) {
+      deviceInfo.androidInfo.then(
+        (androidInfo) => {systemModel = androidInfo.model},
+      );
 
-    deviceInfo.androidInfo
-        .then((androidInfo) => {systemVersion = androidInfo.version.release});
+      deviceInfo.androidInfo.then(
+        (androidInfo) => {systemVersion = androidInfo.version.release},
+      );
+    }
   }
 }
