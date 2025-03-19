@@ -1,7 +1,6 @@
 // -------------------------------------------------------------------
 // Author: WANG JUN
-// Date: 2025/03/14
-// Description:
+// Date: 2025/03/19
+// Description: 
 // -------------------------------------------------------------------
-
-export 'package:flutter_gen/gen_l10n/app_localizations.dart';
+export 'app_localizations.dart';

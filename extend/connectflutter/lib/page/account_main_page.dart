@@ -5,10 +5,10 @@
 // -------------------------------------------------------------------
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../gen/assets.gen.dart';
+import '../l10n/index.dart';
 import '../route/app_router_provider.dart';
 
 class AccountMainPage extends StatefulWidget {
@@ -93,7 +93,7 @@ class _AccountMainPageState extends State<AccountMainPage> {
                 AppLogger().debug("minePath:{$minePath}");
                 context.push(minePath);
               },
-              child: SvgPicture.asset("assets/icon/icon_user_info.svg"),
+              child: Assets.icon.iconUserInfo.svg(),
             ),
           ),
           Container(
@@ -106,7 +106,7 @@ class _AccountMainPageState extends State<AccountMainPage> {
             ),
             child: InkWell(
               onTap: () {},
-              child: SvgPicture.asset("assets/icon/icon_message_black.svg"),
+              child: Assets.icon.iconMessageBlack.svg(),
             ),
           ),
         ],
@@ -135,7 +135,7 @@ class _AccountMainPageState extends State<AccountMainPage> {
         children: [
           Row(
             children: [
-              SvgPicture.asset("assets/icon/icon_open_account.svg"),
+              Assets.icon.iconOpenAccount.svg(),
               SizedBox(width: DimenUtil.width10),
               Text(
                 AppLocalizations.of(context)!.open_account_title,
@@ -197,7 +197,8 @@ class _AccountMainPageState extends State<AccountMainPage> {
       constraints: BoxConstraints(maxWidth: DimenUtil.width50),
       child: Column(
         children: [
-          SvgPicture.asset(ImageUtil.getIconString(icon)),
+          Assets.icon.iconOpenAccount.svg(),
+          SvgGenImage(icon).svg(),
           SizedBox(height: DimenUtil.height10),
           Text(
             title,

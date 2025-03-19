@@ -6,7 +6,6 @@
 
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CommonInputFieldWidget extends StatefulWidget {
   String? hintText;
@@ -14,13 +13,13 @@ class CommonInputFieldWidget extends StatefulWidget {
   EdgeInsetsGeometry? padding;
   bool obscureText;
 
-  CommonInputFieldWidget(
-      {Key? key,
-      this.hintText,
-      this.textChanged,
-      this.padding,
-      this.obscureText = false})
-      : super(key: key);
+  CommonInputFieldWidget({
+    Key? key,
+    this.hintText,
+    this.textChanged,
+    this.padding,
+    this.obscureText = false,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -51,29 +50,29 @@ class _CommonInputFieldWidget extends State<CommonInputFieldWidget> {
       height: 50,
       padding: widget.padding ?? EdgeInsets.only(left: 15, right: 15),
       decoration: BoxDecoration(
-          color: Color(0xFFF6F6F6),
-          borderRadius: BorderRadius.all(Radius.circular(16))),
+        color: Color(0xFFF6F6F6),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+      ),
       child: Row(
         children: [
           Flexible(
-              child: TextField(
-            controller: _textEditingController,
-            obscureText: widget.obscureText,
-            style: TextStyle(fontSize: 14, color: ColorUtil.color303030),
-            decoration: InputDecoration(
-              hintText: widget.hintText,
-              border: InputBorder.none,
-              hintStyle: TextStyle(
-                color: ColorUtil.colorFFB6B6B6,
-                fontSize: 14,
+            child: TextField(
+              controller: _textEditingController,
+              obscureText: widget.obscureText,
+              style: TextStyle(fontSize: 14, color: ColorUtil.color303030),
+              decoration: InputDecoration(
+                hintText: widget.hintText,
+                border: InputBorder.none,
+                hintStyle: TextStyle(
+                  color: ColorUtil.colorFFB6B6B6,
+                  fontSize: 14,
+                ),
               ),
             ),
-          )),
+          ),
           Visibility(
             child: InkWell(
-              child: SvgPicture.asset(
-                ImageUtil.getIconString("icon_clear_grey"),
-              ),
+              child: Assets.icon.iconClearGrey.svg(),
               onTap: () {
                 setState(() {
                   _textEditingController.text = "";

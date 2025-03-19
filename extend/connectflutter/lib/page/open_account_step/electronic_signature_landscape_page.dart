@@ -12,11 +12,11 @@ import 'package:connectflutter/util/file_util.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../component/title/common_title_widget.dart';
+import '../../gen/assets.gen.dart';
 
 class ElectroniceSignatureLandscapePage extends StatefulWidget {
   @override
@@ -87,11 +87,7 @@ class _ElectroniceSignatureLandscapePageState
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset(
-                          ImageUtil.getIconString(
-                            "icon_electronic_signature_tip",
-                          ),
-                        ),
+                        Assets.icon.iconElectronicSignatureTip.svg(),
                         SizedBox(height: DimenUtil.height4),
                         Text(
                           AppLocalizations.of(context)!.please_sign_in_area,

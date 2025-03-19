@@ -5,13 +5,13 @@
 // -------------------------------------------------------------------
 
 import 'package:connectflutter/component/title/index.dart';
+import 'package:connectflutter/gen/assets.gen.dart';
 import 'package:connectflutter/l10n/index.dart';
 import 'package:connectflutter/provider/app_state_manager_provier.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../provider/locale_notifier.dart';
@@ -213,8 +213,7 @@ class SettingPage extends ConsumerWidget {
                     color: ColorUtil.colorFFB6B6B6,
                   ),
                 ),
-                SvgPicture.asset(
-                  ImageUtil.getIconString("icon_right_arrow_grey"),
+                Assets.icon.iconRightArrowGrey.svg(
                   alignment: Alignment.centerRight,
                 ),
               ],

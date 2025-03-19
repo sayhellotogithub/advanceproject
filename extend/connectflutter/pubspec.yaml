@@ -79,7 +79,15 @@ dev_dependencies:
   interactive_media_ads: ^0.2.3+8
 
 flutter_gen:
-  synthetic_package: false
+  output: lib/gen/
+  line_length: 80
+  integrations:
+    image: true
+    flutter_svg: true
+    rive: true
+    lottie: true
+  assets:
+    enabled: true  # アセットを生成する
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

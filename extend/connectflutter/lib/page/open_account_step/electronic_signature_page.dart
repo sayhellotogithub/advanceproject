@@ -12,8 +12,9 @@ import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../gen/assets.gen.dart';
 
 class ElectronicSignaturePage extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _ElectronicSignaturePageState extends State<ElectronicSignaturePage> {
               SizedBox(height: DimenUtil.height20),
               // UploadImageWidget(),
               Container(
-                height:DimenUtil.height180,
+                height: DimenUtil.height180,
                 padding: EdgeInsets.only(
                   left: DimenUtil.width16,
                   right: DimenUtil.width16,
@@ -95,11 +96,7 @@ class _ElectronicSignaturePageState extends State<ElectronicSignaturePage> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SvgPicture.asset(
-                              ImageUtil.getIconString(
-                                "icon_electronic_signature_tip",
-                              ),
-                            ),
+                            Assets.icon.iconElectronicSignature.svg(),
                             SizedBox(height: DimenUtil.height4),
                             Text(
                               AppLocalizations.of(context)!.click_signature,

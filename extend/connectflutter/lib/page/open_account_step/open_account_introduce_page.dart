@@ -48,10 +48,9 @@ class OpenAccountIntroducePage extends StatelessWidget {
             left: DimenUtil.pageLeft,
             bottom: DimenUtil.height40,
           ),
-          child: Image.asset(
-            ImageUtil.getImageString("open_account_introduce_logo"),
-            height: DimenUtil.height140,
+          child: Assets.image.iconDefaultBg.image(
             width: DimenUtil.width156,
+            height: DimenUtil.height140,
           ),
         ),
         Container(

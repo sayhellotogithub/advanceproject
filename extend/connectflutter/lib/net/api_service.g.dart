@@ -30,7 +30,7 @@ class _ApiService implements ApiService {
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<BaseResponseModel<LoginResponseBodyModel>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             'user/v1/${language}/login/normal',

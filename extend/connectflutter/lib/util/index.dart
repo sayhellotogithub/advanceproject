@@ -6,8 +6,8 @@
 
 export 'color_util.dart';
 export 'font_size_util.dart';
-export 'image_util.dart';
 export 'text_util.dart';
+export '../gen/assets.gen.dart';
 export 'util.dart';
 export 'dialog_util.dart';
 export 'page_util.dart';

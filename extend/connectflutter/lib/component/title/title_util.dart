@@ -4,12 +4,9 @@
 // Description:
 // -------------------------------------------------------------------
 
-import 'package:connectflutter/util/color_util.dart';
-import 'package:connectflutter/util/dimen_util.dart';
-import 'package:connectflutter/util/font_size_util.dart';
-import 'package:connectflutter/util/image_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../util/index.dart';
 
 class TitleUitl {
   static const double TITLE_HEIGHT = 70;
@@ -17,8 +14,7 @@ class TitleUitl {
 
   static Widget getLeftBackWidget(Function backClick) {
     return InkWell(
-      child: SvgPicture.asset(
-        ImageUtil.getIconString("icon_back_arrow_black"),
+      child: Assets.icon.iconBackArrowBlack.svg(
         height: DimenUtil.width24,
         width: DimenUtil.width24,
       ),
@@ -56,8 +52,7 @@ class TitleUitl {
 
   static Widget getLeftBackWhiteWidget(Function backClick) {
     return InkWell(
-      child: SvgPicture.asset(
-        ImageUtil.getIconString("icon_back_arrow_white"),
+      child: Assets.icon.iconBackArrowWhite.svg(
         height: DimenUtil.width24,
         width: DimenUtil.width24,
       ),

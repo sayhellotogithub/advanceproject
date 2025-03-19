@@ -9,8 +9,9 @@ import 'package:connectflutter/l10n/index.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../gen/assets.gen.dart';
 
 class MinePage extends StatefulWidget {
   @override
@@ -41,8 +42,7 @@ class _MinePageState extends State<MinePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(16)),
                 ),
-                child: Image.asset(
-                  ImageUtil.getImageString("icon_default_bg"),
+                child: Assets.image.iconDefaultBg.image(
                   width: DimenUtil.width70,
                   height: DimenUtil.height70,
                   fit: BoxFit.fill,
@@ -64,9 +64,7 @@ class _MinePageState extends State<MinePage> {
                         ),
                       ),
                       SizedBox(width: DimenUtil.width5),
-                      SvgPicture.asset(
-                        ImageUtil.getIconString("icon_eye_show"),
-                      ),
+                      Assets.icon.iconEyeShow.svg(),
                     ],
                   ),
                   Text(
@@ -108,7 +106,7 @@ class _MinePageState extends State<MinePage> {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(ImageUtil.getIconString(iconName)),
+          SvgGenImage(iconName).svg(),
           SizedBox(width: DimenUtil.width10),
           Text(
             desc,
@@ -118,8 +116,7 @@ class _MinePageState extends State<MinePage> {
             ),
           ),
           Expanded(
-            child: SvgPicture.asset(
-              ImageUtil.getIconString("icon_right_arrow_grey"),
+            child: Assets.icon.iconRightArrowGrey.svg(
               alignment: Alignment.centerRight,
             ),
           ),

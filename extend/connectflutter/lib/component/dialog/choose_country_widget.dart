@@ -12,7 +12,6 @@ import 'package:connectflutter/model/city_model.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lpinyin/lpinyin.dart';
 
 import '../../net/api_service_provider.dart';
@@ -29,7 +28,7 @@ class ChooseCountryWidget extends ConsumerStatefulWidget {
 class _ChooseCountryWidgetState extends ConsumerState<ChooseCountryWidget> {
   List<CityModel> cityList = [];
   double susItemHeight = 50;
-  String imgFavorite = ImageUtil.getImageString("ic_favorite");
+  String imgFavorite = Assets.image.icFavorite.path;
   List<CityModel> hotCityList = [];
 
   void itemClickChange(CityModel value) {}
@@ -162,7 +161,7 @@ class _ChooseCountryWidgetState extends ConsumerState<ChooseCountryWidget> {
                   AppLocalizations.of(context)!.please_choose_phone_area,
                   style: TextStyle(fontSize: 18, color: ColorUtil.color303030),
                 ),
-                SvgPicture.asset(ImageUtil.getIconString("icon_close_black")),
+                Assets.icon.iconCloseBlack.svg(width: 24, height: 24),
               ],
             ),
           ),
@@ -226,7 +225,7 @@ class _ChooseCountryWidgetState extends ConsumerState<ChooseCountryWidget> {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(ImageUtil.getIconString("icon_search")),
+          Assets.icon.iconSearch.svg(),
           SizedBox(width: 10),
           Flexible(
             child: TextField(

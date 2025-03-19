@@ -9,8 +9,8 @@ import 'package:connectflutter/l10n/index.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../gen/assets.gen.dart';
 import '../../provider/locale_notifier.dart';
 
 class SetLanguagePageNew extends ConsumerWidget {
@@ -63,8 +63,7 @@ class SetLanguagePageNew extends ConsumerWidget {
             desc,
             style: TextStyle(color: ColorUtil.color303030, fontSize: 14),
           ),
-          if (isChoose)
-            SvgPicture.asset(ImageUtil.getIconString("icon_selected_blue")),
+          if (isChoose) Assets.icon.iconSelectedBlue.svg(),
         ],
       ),
     );

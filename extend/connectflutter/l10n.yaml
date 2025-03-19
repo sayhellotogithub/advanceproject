@@ -1,5 +1,5 @@
 arb_dir: lib/l10n
-
+synthetic-package: false
 template_arbs:
   - lib/l10n/app_en.arb       # 新しい英語のテンプレートファイル
 #output-localization-file: app_localizations.dart
