@@ -4,8 +4,10 @@
 // Description:
 // -------------------------------------------------------------------
 import 'package:connectflutter/model/index.dart';
+import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -35,9 +37,7 @@ class _HomePageState extends State<HomePage> {
     if (_selectedIndex == 0) {
       return _buildHomePage();
     } else if (_selectedIndex == 1) {
-      return Center(
-        child: Text('Widgets Page', style: TextStyle(fontSize: 20)),
-      );
+      return _buildWidgetsPage();
     } else {
       return Center(
         child: Text('Profile Page', style: TextStyle(fontSize: 20)),
@@ -55,6 +55,35 @@ class _HomePageState extends State<HomePage> {
             _buildNewsSection("最新の技術ニュース", getLatestLinkModels()),
             _buildNewsSection("最新のAI技術", getAiLinkModels()),
             _buildNewsSection("関連技術", getRelatedLinkModels()),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWidgetsPage() {
+    return Padding(
+      padding: EdgeInsets.all(DimenUtil.width20),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+              onTap: () {
+                context.push(videoAdPath);
+              },
+              child: Container(
+                padding: EdgeInsets.all(DimenUtil.width20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  'Video Ads',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -18,6 +18,7 @@ import '../page/open_account_step/electronic_signature_landscape_page.dart';
 import '../page/open_account_step/electronic_signature_page.dart';
 import '../page/open_account_step/open_account_introduce_page.dart';
 import '../page/open_account_step/upload_bank_page.dart';
+import '../page/video/video_ad_page.dart';
 import '../util/index.dart';
 import 'router_notifier.dart';
 
@@ -39,6 +40,7 @@ const String openAccountIntroductionPath = "/openAccountIntroduction";
 const String authenticationPhone = "/authenticationPhone";
 const String authenticationEmailPath = "/authenticationEmail";
 const String logoutPath = "/logout";
+const String videoAdPath="/videoAd";
 
 final routerNotifier = RouterNotifier();
 
@@ -100,6 +102,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: authenticationEmailPath,
         builder: (context, state) => AuthenticationEmailPage(),
       ),
+      GoRoute(path: videoAdPath,builder: (context,state)=>VideoAdPage()),
     ],
     errorBuilder:
         (context, state) =>
