@@ -49,16 +49,4 @@ class TitleUitl {
       ),
     );
   }
-
-  static Widget getLeftBackWhiteWidget(Function backClick) {
-    return InkWell(
-      child: Assets.icon.iconBackArrowWhite.svg(
-        height: DimenUtil.width24,
-        width: DimenUtil.width24,
-      ),
-      onTap: () {
-        backClick();
-      },
-    );
-  }
 }

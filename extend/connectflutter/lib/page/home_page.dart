@@ -9,6 +9,8 @@ import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'mine/profile_page.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -39,9 +41,7 @@ class _HomePageState extends State<HomePage> {
     } else if (_selectedIndex == 1) {
       return _buildWidgetsPage();
     } else {
-      return Center(
-        child: Text('Profile Page', style: TextStyle(fontSize: 20)),
-      );
+      return ProfilePage();
     }
   }
 
