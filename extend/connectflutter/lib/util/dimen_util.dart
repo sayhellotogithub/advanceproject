@@ -7,6 +7,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DimenUtil {
+  const DimenUtil._(); // インスタンス化を防ぐ
   // ページ (Page)
   static double get pageBottom => 34.h;
 

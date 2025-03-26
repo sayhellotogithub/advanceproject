@@ -4,6 +4,7 @@ import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
 import 'package:connectflutter/page/mine/mine_page.dart';
 import 'package:connectflutter/page/mine/setting_page.dart';
+import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +26,7 @@ import 'router_notifier.dart';
 const String splashPath = '/splash';
 const String loginPath = '/login';
 const String homePath = "/home";
-const String accountMainPage="/accountMainPage";
+const String accountMainPage = "/accountMainPage";
 const String settingsPath = '/settings';
 const String minePath = "/mine";
 const String setLanguagePath = "/setLanguage";
@@ -40,7 +41,10 @@ const String openAccountIntroductionPath = "/openAccountIntroduction";
 const String authenticationPhone = "/authenticationPhone";
 const String authenticationEmailPath = "/authenticationEmail";
 const String logoutPath = "/logout";
-const String videoAdPath="/videoAd";
+const String videoAdPath = "/videoAd";
+
+//widget
+const String cupertinoCheckboxPath = "/widget/cupertinoCheckbox";
 
 final routerNotifier = RouterNotifier();
 
@@ -54,7 +58,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => PasswordLoginPage(),
       ),
       GoRoute(path: homePath, builder: (context, state) => HomePage()),
-      GoRoute(path: accountMainPage, builder: (context, state) => AccountMainPage()),
+      GoRoute(
+        path: accountMainPage,
+        builder: (context, state) => AccountMainPage(),
+      ),
       GoRoute(path: settingsPath, builder: (context, state) => SettingPage()),
       GoRoute(path: minePath, builder: (context, state) => MinePage()),
       GoRoute(
@@ -102,7 +109,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: authenticationEmailPath,
         builder: (context, state) => AuthenticationEmailPage(),
       ),
-      GoRoute(path: videoAdPath,builder: (context,state)=>VideoAdPage()),
+      GoRoute(path: videoAdPath, builder: (context, state) => VideoAdPage()),
+      GoRoute(
+        path: cupertinoCheckboxPath,
+        builder: (context, state) => CupertinoCheckboxExample(),
+      ),
     ],
     errorBuilder:
         (context, state) =>

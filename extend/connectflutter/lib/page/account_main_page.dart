@@ -7,7 +7,6 @@ import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../gen/assets.gen.dart';
 import '../l10n/index.dart';
 import '../route/app_router_provider.dart';
 

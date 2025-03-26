@@ -68,23 +68,31 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            InkWell(
-              onTap: () {
-                context.push(videoAdPath);
-              },
-              child: Container(
-                padding: EdgeInsets.all(DimenUtil.width20),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  'Video Ads',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              ),
-            ),
+            _buildWidgetButton('Video Ads', () {
+              context.push(videoAdPath);
+            }),
+            SizedBox(height: DimenUtil.height10),
+            _buildWidgetButton('Cupertino Checkbox Example', () {
+              context.push(cupertinoCheckboxPath);
+            }),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWidgetButton(String text, VoidCallback onClick) {
+    return InkWell(
+      onTap: onClick,
+      child: Container(
+        padding: EdgeInsets.all(DimenUtil.width10),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(color: Colors.white, fontSize: FontSizeUtil.size14),
         ),
       ),
     );

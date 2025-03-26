@@ -41,6 +41,7 @@ import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 
 class FileUtil {
+  const FileUtil._(); // インスタンス化を防ぐ
   static Future<File> _localFile(String filename) async {
     final path = await localPath;
     return File('$path/$filename');
@@ -52,7 +53,10 @@ class FileUtil {
   }
 
   static Future<String> getFilename(
-      String userId, String type, String key) async {
+    String userId,
+    String type,
+    String key,
+  ) async {
     return userId + '/' + type + '/' + key;
   }
 
@@ -73,7 +77,9 @@ class FileUtil {
   }
 
   static Future<Map<String, dynamic>?> getObject(
-      String userId, String key) async {
+    String userId,
+    String key,
+  ) async {
     final filename = await getFilename(userId, 'objects', key);
     final file = await _localFile(filename);
 
@@ -86,7 +92,10 @@ class FileUtil {
   }
 
   static Future<String> saveImage(
-      String userId, String key, Uint8List image) async {
+    String userId,
+    String key,
+    Uint8List image,
+  ) async {
     final filename = await getFilename(userId, 'images', key);
     final file = await _localFile(filename);
 
@@ -98,7 +107,10 @@ class FileUtil {
   }
 
   static void saveObject(
-      String userId, String key, Map<String, dynamic> object) async {
+    String userId,
+    String key,
+    Map<String, dynamic> object,
+  ) async {
     final filename = await getFilename(userId, 'objects', key);
     final file = await _localFile(filename);
 

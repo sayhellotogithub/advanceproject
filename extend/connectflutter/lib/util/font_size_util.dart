@@ -7,6 +7,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontSizeUtil {
+  const FontSizeUtil._(); // インスタンス化を防ぐ
   static double get size14 => 14.sp;
 
   static double get size16 => 16.sp;

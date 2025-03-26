@@ -16,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 ///
 ///
 class PageUtil {
+  const PageUtil._(); // インスタンス化を防ぐ
   static double toolbarHeight = 56.h;
 
   static Widget buildPage(
