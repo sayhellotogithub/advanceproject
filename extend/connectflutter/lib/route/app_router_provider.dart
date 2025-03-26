@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../page/account_main_page.dart';
+import '../page/fav/game/goban_page.dart';
 import '../page/home_page.dart';
 import '../page/login/password_login_page.dart';
 import '../page/mine/set_language_page_new.dart';
@@ -47,6 +48,7 @@ const String videoAdPath = "/videoAd";
 //widget
 const String cupertinoCheckboxPath = "/widget/checkbox/cupertinoCheckbox";
 const String cupertinoSwitchPath = "/widget/switch/cupertinoSwitch";
+const String gobanPath="/fav/game/goban";
 
 final routerNotifier = RouterNotifier();
 
@@ -120,6 +122,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: cupertinoSwitchPath,
         builder: (context, state) => CupertinoSwitchExample(),
       ),
+     GoRoute(path: gobanPath,builder: (context,state)=>GoBanPage())
     ],
     errorBuilder:
         (context, state) =>
