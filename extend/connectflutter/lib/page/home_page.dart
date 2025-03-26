@@ -75,6 +75,10 @@ class _HomePageState extends State<HomePage> {
             _buildWidgetButton('Cupertino Checkbox Example', () {
               context.push(cupertinoCheckboxPath);
             }),
+            SizedBox(height: DimenUtil.height10),
+            _buildWidgetButton('Cupertino Switch Example', () {
+              context.push(cupertinoSwitchPath);
+            }),
           ],
         ),
       ),

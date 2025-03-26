@@ -5,6 +5,7 @@ import 'package:connectflutter/page/login/reset_password_page.dart';
 import 'package:connectflutter/page/mine/mine_page.dart';
 import 'package:connectflutter/page/mine/setting_page.dart';
 import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
+import 'package:connectflutter/page/widget/switch/cupertino_switch_example.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +45,8 @@ const String logoutPath = "/logout";
 const String videoAdPath = "/videoAd";
 
 //widget
-const String cupertinoCheckboxPath = "/widget/cupertinoCheckbox";
+const String cupertinoCheckboxPath = "/widget/checkbox/cupertinoCheckbox";
+const String cupertinoSwitchPath = "/widget/switch/cupertinoSwitch";
 
 final routerNotifier = RouterNotifier();
 
@@ -113,6 +115,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: cupertinoCheckboxPath,
         builder: (context, state) => CupertinoCheckboxExample(),
+      ),
+      GoRoute(
+        path: cupertinoSwitchPath,
+        builder: (context, state) => CupertinoSwitchExample(),
       ),
     ],
     errorBuilder:
