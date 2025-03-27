@@ -4,6 +4,7 @@ import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
 import 'package:connectflutter/page/mine/mine_page.dart';
 import 'package:connectflutter/page/mine/setting_page.dart';
+import 'package:connectflutter/page/theme/status_bar_configuration_guide_page.dart';
 import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
 import 'package:connectflutter/page/widget/switch/cupertino_switch_example.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ import '../page/open_account_step/electronic_signature_page.dart';
 import '../page/open_account_step/open_account_introduce_page.dart';
 import '../page/open_account_step/upload_bank_page.dart';
 import '../page/video/video_ad_page.dart';
+import '../provider/app_state_manager_provier.dart';
 import '../util/index.dart';
 import 'router_notifier.dart';
 
@@ -48,7 +50,9 @@ const String videoAdPath = "/videoAd";
 //widget
 const String cupertinoCheckboxPath = "/widget/checkbox/cupertinoCheckbox";
 const String cupertinoSwitchPath = "/widget/switch/cupertinoSwitch";
-const String gobanPath="/fav/game/goban";
+const String gobanPath = "/fav/game/goban";
+const String statusBarCongigurationGuidePath =
+    "/theme/statusBarCongigurationGuide";
 
 final routerNotifier = RouterNotifier();
 
@@ -56,7 +60,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => PasswordLoginPage()),
+      // GoRoute(path: '/', builder: (context, state) => HomePage()),
       GoRoute(
         path: loginPath,
         builder: (context, state) => PasswordLoginPage(),
@@ -122,16 +126,16 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: cupertinoSwitchPath,
         builder: (context, state) => CupertinoSwitchExample(),
       ),
-     GoRoute(path: gobanPath,builder: (context,state)=>GoBanPage())
+      GoRoute(path: gobanPath, builder: (context, state) => GoBanPage()),
+      GoRoute(
+        path: statusBarCongigurationGuidePath,
+        builder: (context, state) => StatusBarConfigurationGuidePage(),
+      ),
     ],
     errorBuilder:
         (context, state) =>
             const Scaffold(body: Center(child: Text('Page not found'))),
     redirect: (context, state) {
-      if (state.matchedLocation == '/home') {
-        // 最後の画面に到達した場合の処理
-        AppLogger().debug('last page');
-      }
       return null;
     },
     debugLogDiagnostics: true,
@@ -145,7 +149,6 @@ void safeGoBack(BuildContext context) {
   if (canPop) {
     context.pop();
   } else {
-    // context.go('/');
     BotToast.showText(text: "Can't go back");
   }
 }

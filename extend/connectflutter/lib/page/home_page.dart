@@ -28,6 +28,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void didChangeDependencies() {
+    StatusBarUtil.applyPlatformSpecificStatusBar(context);
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PageUtil.buildPageWithNoAppBar(
       _buildBody(),
@@ -82,6 +88,10 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: DimenUtil.height10),
             _buildWidgetButton('Go ban', () {
               context.push(gobanPath);
+            }),
+            SizedBox(height: DimenUtil.height10),
+            _buildWidgetButton('StatusBar Congiguration Guide', () {
+              context.push(statusBarCongigurationGuidePath);
             }),
           ],
         ),

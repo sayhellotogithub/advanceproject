@@ -66,6 +66,12 @@ class _PasswordLoginPageState extends ConsumerState<PasswordLoginPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    StatusBarUtil.applyPlatformSpecificStatusBar(context);
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PageUtil.buildPage(
       _buildBody(),

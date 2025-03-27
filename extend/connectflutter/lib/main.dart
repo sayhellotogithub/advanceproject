@@ -5,13 +5,12 @@
 // -------------------------------------------------------------------
 
 import 'package:bot_toast/bot_toast.dart';
-
 import 'package:connectflutter/provider/app_state_manager_provier.dart';
 import 'package:connectflutter/provider/locale_notifier.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
+import 'package:connectflutter/util/index.dart';
 import 'package:connectflutter/util/phone_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +24,7 @@ void main() async {
 
   // SharedPreferencesを初期化
   final sharedPreferences = await SharedPreferences.getInstance();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  StatusBarUtil.setPreferredOrientations();
 
   runApp(
     ProviderScope(
@@ -66,6 +65,7 @@ class MyApp extends ConsumerWidget {
           theme: ThemeData(
             primaryColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+
           ),
         );
       },

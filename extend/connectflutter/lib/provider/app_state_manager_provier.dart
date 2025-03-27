@@ -20,7 +20,7 @@ class AppStateManager {
   String? userToken;
 
   Future<void> initializeApp(WidgetRef ref) async {
-    userToken = (await TokenSharePref.getUserToken());
+    userToken = await TokenSharePref.getUserToken();
     _loggedIn = !TextUtil.isEmpty(userToken);
     final router = ref.read(routerProvider);
     if (_loggedIn) {

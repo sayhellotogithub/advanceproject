@@ -18,3 +18,4 @@ export 'dimen_util.dart';
 export 'log_util.dart';
 export 'widget_util.dart';
 export 'url_util.dart';
+export 'status_bar_util.dart';
