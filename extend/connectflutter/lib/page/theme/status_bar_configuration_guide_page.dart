@@ -3,11 +3,11 @@
 // Date: 2025/03/27
 // Description:
 // -------------------------------------------------------------------
-import 'dart:io';
-
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'custom_status_bar_page.dart';
 
 class StatusBarConfigurationGuidePage extends StatefulWidget {
   @override
@@ -39,9 +39,6 @@ class _StatusBarConfigurationGuideState
     });
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,14 +56,54 @@ class _StatusBarConfigurationGuideState
 
             // 全画面モード設定ボタン
             ElevatedButton(
-              onPressed:StatusBarUtil.configureFullScreenMode,
+              onPressed: StatusBarUtil.configureFullScreenMode,
               child: Text('全画面モード'),
             ),
             SizedBox(height: 20),
             // 全画面モード設定ボタン
             ElevatedButton(
-              onPressed:StatusBarUtil.exitFullScreen,
+              onPressed: StatusBarUtil.exitFullScreen,
               child: Text('正常モード'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DefaultStatusBarPage(),
+                  ),
+                );
+              },
+              child: Text('デフォルトステータスバーページ'),
+            ),
+            SizedBox(height: 20),
+
+            // カスタムステータスバー
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CustomStatusBarPage(),
+                  ),
+                );
+              },
+              child: Text('カスタムステータスバーページ'),
+            ),
+            SizedBox(height: 20),
+
+            // 透明ステータスバー
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TransparentStatusBarPage(),
+                  ),
+                );
+              },
+              child: Text('透明ステータスバーページ'),
             ),
 
             // 現在のステータスバー状態の表示

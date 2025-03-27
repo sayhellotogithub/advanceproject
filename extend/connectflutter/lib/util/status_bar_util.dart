@@ -45,10 +45,12 @@ class StatusBarUtil {
   static void applyPlatformSpecificStatusBar(BuildContext context) {
     // 現在のテーマの明るさを取得
     Brightness currentBrightness = MediaQuery.of(context).platformBrightness;
-    SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.manual,
-      overlays: SystemUiOverlay.values, // 上部のみ表示
-    );
+    if (Platform.isIOS) {
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.manual,
+        overlays: SystemUiOverlay.values, // 上部のみ表示
+      );
+    }
     if (Platform.isIOS || Platform.isAndroid) {
       if (currentBrightness == Brightness.light) {
         SystemChrome.setSystemUIOverlayStyle(
@@ -86,13 +88,6 @@ class StatusBarUtil {
         overlays: [], // すべて非表示
       );
     }
-  }
-
-  // テーマに応じたステータスバースタイル
-  static SystemUiOverlayStyle getStatusBarStyleForTheme(Brightness brightness) {
-    return brightness == Brightness.dark
-        ? SystemUiOverlayStyle.dark
-        : SystemUiOverlayStyle.light;
   }
 
   // 通常画面に戻す

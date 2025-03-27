@@ -140,7 +140,6 @@ class SettingPage extends ConsumerWidget {
                                 ),
                               ),
                               onTap: () {
-                                context.pop();
                                 ref
                                     .read(appStateManagerProvider.notifier)
                                     .logout(ref);

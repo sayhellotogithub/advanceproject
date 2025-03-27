@@ -60,7 +60,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/',
     routes: [
-      // GoRoute(path: '/', builder: (context, state) => HomePage()),
+      GoRoute(path: '/', builder: (context, state) => HomePage()),
       GoRoute(
         path: loginPath,
         builder: (context, state) => PasswordLoginPage(),
@@ -136,6 +136,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         (context, state) =>
             const Scaffold(body: Center(child: Text('Page not found'))),
     redirect: (context, state) {
+      final appState = ref.read(appStateManagerProvider);
+
+      // ログインしていない場合は /login にリダイレクト
+      final isLoggingIn = state.fullPath == loginPath;
+      if (!appState.isLoggedIn && !isLoggingIn) {
+        return loginPath;
+      }
+      // すでにログインしていて /login にアクセスしようとした場合はホームへ
+      if (appState.isLoggedIn && isLoggingIn) {
+        return '/';
+      }
+
       return null;
     },
     debugLogDiagnostics: true,

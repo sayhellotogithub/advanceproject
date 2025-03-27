@@ -20,6 +20,7 @@ class AppStateManager {
   String? userToken;
 
   Future<void> initializeApp(WidgetRef ref) async {
+    AppLogger().debug("initializeApp(WidgetRef ref)");
     userToken = await TokenSharePref.getUserToken();
     _loggedIn = !TextUtil.isEmpty(userToken);
     final router = ref.read(routerProvider);
@@ -51,7 +52,7 @@ class AppStateNotifier extends StateNotifier<AppStateManager> {
     await TokenSharePref.invalidate();
     // 直接新しい状態を設定
     state = AppStateManager();
-    ref.read(routerProvider).replace(loginPath);
+    ref.read(routerProvider).go(loginPath);
   }
 
   Future<void> initializeApp(WidgetRef ref) async {

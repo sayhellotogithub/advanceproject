@@ -4,7 +4,6 @@
 // Description:
 // -------------------------------------------------------------------
 
-import 'package:bot_toast/bot_toast.dart';
 import 'package:connectflutter/provider/app_state_manager_provier.dart';
 import 'package:connectflutter/provider/locale_notifier.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
@@ -39,16 +38,24 @@ void main() async {
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
+
+
+
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     PhoneUtil.initSystem();
-    final router = ref.watch(routerProvider);
-    final locale = ref.watch(localeProvider);
+
     final initialization = ref
         .watch(appStateManagerProvider.notifier)
         .initializeApp(ref);
 
     initialization.then((_) => FlutterNativeSplash.remove()); // 🔹 スプラッシュ削除
+    AppLogger().debug("FlutterNativeSplash");
+    final locale = ref.watch(localeProvider);
+    AppLogger().debug("localeProvider");
+    final router = ref.watch(routerProvider);
+    AppLogger().debug("routerProvider");
 
     return ScreenUtilInit(
       designSize: Size(375, 812),
@@ -65,7 +72,6 @@ class MyApp extends ConsumerWidget {
           theme: ThemeData(
             primaryColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-
           ),
         );
       },
