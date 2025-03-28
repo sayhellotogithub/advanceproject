@@ -38,24 +38,17 @@ void main() async {
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
-
-
-
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     PhoneUtil.initSystem();
 
-    final initialization = ref
-        .watch(appStateManagerProvider.notifier)
-        .initializeApp(ref);
+    // 非同期初期化を待機
+    ref.watch(appStateManagerProvider.notifier).initializeApp(ref).then((_) {
+      FlutterNativeSplash.remove(); // スプラッシュ削除
+    });
 
-    initialization.then((_) => FlutterNativeSplash.remove()); // 🔹 スプラッシュ削除
-    AppLogger().debug("FlutterNativeSplash");
     final locale = ref.watch(localeProvider);
-    AppLogger().debug("localeProvider");
     final router = ref.watch(routerProvider);
-    AppLogger().debug("routerProvider");
 
     return ScreenUtilInit(
       designSize: Size(375, 812),
