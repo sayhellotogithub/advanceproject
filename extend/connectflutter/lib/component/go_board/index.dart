@@ -11,4 +11,5 @@ import 'package:flutter/material.dart';
 part 'go_board_controller.dart';
 part 'go_board_widget.dart';
 part 'go_score.dart';
+part 'life_and_death_analyzer.dart';
 

@@ -35,6 +35,41 @@ class _GoBanPageState extends State<GoBanPage> {
     super.initState();
   }
 
+  void _analyzeLifeAndDeath() {
+    final analyzer = LifeAndDeathAnalyzer();
+    final result = analyzer.analyzeLifeAndDeath(_boardController.boardList());
+
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('死活問題分析'),
+            content: ListView(
+              children:
+                  result.entries.map((entry) {
+                    final statusText =
+                        {
+                          StoneStatus.alive: '生',
+                          StoneStatus.dead: '死',
+                          StoneStatus.seki: 'セキ',
+                          StoneStatus.unsure: '不明',
+                        }[entry.value];
+
+                    return Text(
+                      '座標: (${entry.key.x}, ${entry.key.y}) - ステータス: $statusText',
+                    );
+                  }).toList(),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text('閉じる'),
+              ),
+            ],
+          ),
+    );
+  }
+
   void _calculateAndShowScore() {
     final result = scoring.calculateScore(_boardController.boardList());
 
@@ -74,12 +109,16 @@ class _GoBanPageState extends State<GoBanPage> {
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () {
-              _boardController?.clear();
+              _boardController.clear();
             },
           ),
           IconButton(
             icon: Icon(Icons.calculate),
             onPressed: _calculateAndShowScore,
+          ),
+          IconButton(
+            icon: Icon(Icons.visibility),
+            onPressed: _analyzeLifeAndDeath,
           ),
         ],
       ),
