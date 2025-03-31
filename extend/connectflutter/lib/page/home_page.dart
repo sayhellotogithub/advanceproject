@@ -93,6 +93,11 @@ class _HomePageState extends State<HomePage> {
             _buildWidgetButton('StatusBar Congiguration Guide', () {
               context.push(statusBarCongigurationGuidePath);
             }),
+            SizedBox(height: DimenUtil.height10),
+            _buildWidgetButton('Blue tooth', () {
+              context.push(bluetoothPath);
+            }),
+
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 // 路由状态的Provider
+import 'package:connectflutter/page/fav/game/blue_page.dart';
 import 'package:connectflutter/page/login/auth_code_page.dart';
 import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
@@ -53,6 +54,8 @@ const String cupertinoSwitchPath = "/widget/switch/cupertinoSwitch";
 const String gobanPath = "/fav/game/goban";
 const String statusBarCongigurationGuidePath =
     "/theme/statusBarCongigurationGuide";
+
+const String bluetoothPath ="/fav/game/bluetooth";
 
 final routerNotifier = RouterNotifier();
 
@@ -131,6 +134,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: statusBarCongigurationGuidePath,
         builder: (context, state) => StatusBarConfigurationGuidePage(),
       ),
+      GoRoute(path: bluetoothPath,builder: (context,state)=>BluePage()),
     ],
     errorBuilder:
         (context, state) =>
