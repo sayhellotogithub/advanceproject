@@ -24,6 +24,7 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
   String? _detectedIp;
   bool _isSearching = false;
   String _localIp = "";
+  String _role = 'p2'; // 初期はプレイヤー2（接続者）
 
   @override
   void initState() {
@@ -109,6 +110,20 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
             ),
             Row(
               children: [
+                const Text('役割:'),
+                DropdownButton<String>(
+                  value: _role,
+                  items: const [
+                    DropdownMenuItem(value: 'p2', child: Text('プレイヤー2')),
+                    DropdownMenuItem(value: 'p1', child: Text('プレイヤー1')),
+                    DropdownMenuItem(value: 'spectator', child: Text('観戦者')),
+                  ],
+                  onChanged: (val) => setState(() => _role = val!),
+                ),
+              ],
+            ),
+            Row(
+              children: [
                 const Text('1. 自動検出（mDNS）'),
                 IconButton(
                   icon: Icon(Icons.refresh),
@@ -131,7 +146,7 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
               child: ElevatedButton(
                 onPressed: () async {
                   final ip = _controller.text.trim();
-                  final success =  await connection.connectToHost(ip);
+                  final success = await connection.connectToHost(ip);
                   if (!success) {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -141,7 +156,7 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
                     return;
                   }
                   if (context.mounted) {
-                    context.push(shogiBoardPath);
+                    context.push(shogiBoardPath, extra: _role);
                   }
                 },
                 child: const Text('接続する'),

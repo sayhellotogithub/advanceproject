@@ -12,6 +12,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 typedef OnMessageReceived = void Function(Map<String, dynamic> message);
 
+
+
 class LanConnectionService {
   Socket? _socket;
   ServerSocket? _server;

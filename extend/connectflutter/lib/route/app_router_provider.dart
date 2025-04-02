@@ -57,9 +57,9 @@ const String gobanPath = "/fav/game/goban";
 const String statusBarCongigurationGuidePath =
     "/theme/statusBarCongigurationGuide";
 
-const String bluetoothPath ="/fav/game/bluetooth";
-const String shogiBoardPath="/fav/game/shogiboard";
-const String connectPath="/fav/game/connect";
+const String bluetoothPath = "/fav/game/bluetooth";
+const String shogiBoardPath = "/fav/game/shogiboard";
+const String connectPath = "/fav/game/connect";
 
 final routerNotifier = RouterNotifier();
 
@@ -138,10 +138,15 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: statusBarCongigurationGuidePath,
         builder: (context, state) => StatusBarConfigurationGuidePage(),
       ),
-      GoRoute(path: bluetoothPath,builder: (context,state)=>BluePage()),
-      GoRoute(path: shogiBoardPath,builder: (context,state)=>ShogiBoard()),
-      GoRoute(path: connectPath,builder: (context,state)=>ConnectPage()),
-
+      GoRoute(path: bluetoothPath, builder: (context, state) => BluePage()),
+      GoRoute(
+        path: shogiBoardPath,
+        builder: (context, state) {
+          final String playerId = state.extra as String;
+          return ShogiBoard(myPlayerId: playerId);
+        },
+      ),
+      GoRoute(path: connectPath, builder: (context, state) => ConnectPage()),
     ],
     errorBuilder:
         (context, state) =>

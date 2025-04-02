@@ -50,8 +50,10 @@ class MyApp extends ConsumerWidget {
         final pieceId = msg['pieceId'];
         final x = msg['x'];
         final y = msg['y'];
-
-        ref.read(boardProvider.notifier).applyRemoteMove(pieceId, x, y);
+        final nextTurn = msg['nextTurn'];
+        ref
+            .read(boardProvider.notifier)
+            .applyRemoteMove(pieceId, x, y, nextTurn);
       }
     };
     // 非同期初期化を待機
