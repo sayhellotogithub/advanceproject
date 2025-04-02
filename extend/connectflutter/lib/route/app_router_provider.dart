@@ -1,5 +1,7 @@
 // 路由状态的Provider
 import 'package:connectflutter/page/fav/game/blue_page.dart';
+import 'package:connectflutter/page/fav/game/connect_page.dart';
+import 'package:connectflutter/page/fav/game/shogi_board.dart';
 import 'package:connectflutter/page/login/auth_code_page.dart';
 import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
@@ -56,6 +58,8 @@ const String statusBarCongigurationGuidePath =
     "/theme/statusBarCongigurationGuide";
 
 const String bluetoothPath ="/fav/game/bluetooth";
+const String shogiBoardPath="/fav/game/shogiboard";
+const String connectPath="/fav/game/connect";
 
 final routerNotifier = RouterNotifier();
 
@@ -135,6 +139,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => StatusBarConfigurationGuidePage(),
       ),
       GoRoute(path: bluetoothPath,builder: (context,state)=>BluePage()),
+      GoRoute(path: shogiBoardPath,builder: (context,state)=>ShogiBoard()),
+      GoRoute(path: connectPath,builder: (context,state)=>ConnectPage()),
+
     ],
     errorBuilder:
         (context, state) =>

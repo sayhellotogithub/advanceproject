@@ -5,6 +5,8 @@
 // -------------------------------------------------------------------
 
 import 'package:connectflutter/provider/app_state_manager_provier.dart';
+import 'package:connectflutter/provider/game/borad_state.dart';
+import 'package:connectflutter/provider/game/lan_connection_service.dart';
 import 'package:connectflutter/provider/locale_notifier.dart';
 import 'package:connectflutter/route/app_router_provider.dart';
 import 'package:connectflutter/util/index.dart';
@@ -42,6 +44,16 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     PhoneUtil.initSystem();
 
+    ref.read(lanConnectionProvider).onMessage = (msg) {
+      AppLogger().debug(msg.toString());
+      if (msg['type'] == 'move') {
+        final pieceId = msg['pieceId'];
+        final x = msg['x'];
+        final y = msg['y'];
+
+        ref.read(boardProvider.notifier).applyRemoteMove(pieceId, x, y);
+      }
+    };
     // 非同期初期化を待機
     ref.watch(appStateManagerProvider.notifier).initializeApp(ref).then((_) {
       FlutterNativeSplash.remove(); // スプラッシュ削除
