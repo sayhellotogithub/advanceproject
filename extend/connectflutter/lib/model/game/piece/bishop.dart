@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Author: WANG JUN
 // Date: 2025/04/01
-// Description: Bishop（斜め無限）
+// Description: ♗ Bishop（斜め無限）
 // -------------------------------------------------------------------
 import 'package:connectflutter/model/game/piece/piece.dart';
 
@@ -15,24 +15,17 @@ class Bishop extends Piece {
 
   @override
   List<List<int>> getAvailableMoves(Board board) {
-    final dirs = [
-      [-1, -1],
-      [-1, 1],
-      [1, -1],
-      [1, 1],
-    ];
-    final result = <List<int>>[];
-
-    for (var d in dirs) {
-      int nx = x + d[0], ny = y + d[1];
-      while (board.canMoveTo(owner, nx, ny)) {
-        result.add([nx, ny]);
-        if (board.isOccupied(nx, ny)) break;
-        nx += d[0];
-        ny += d[1];
-      }
-    }
-    return result;
+    return board.getLinearMoves(
+      x,
+      y,
+      owner,
+      directions: [
+        [1, 1],
+        [-1, -1],
+        [1, -1],
+        [-1, 1],
+      ],
+    );
   }
 
   @override

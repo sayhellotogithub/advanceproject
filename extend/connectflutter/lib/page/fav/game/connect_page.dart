@@ -12,6 +12,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:multicast_dns/multicast_dns.dart';
 
+import '../../../component/index.dart';
+import '../../../util/index.dart';
+
 class ConnectPage extends ConsumerStatefulWidget {
   const ConnectPage({super.key});
 
@@ -20,11 +23,13 @@ class ConnectPage extends ConsumerStatefulWidget {
 }
 
 class _ConnectPageState extends ConsumerState<ConnectPage> {
-  final _controller = TextEditingController();
   String? _detectedIp;
   bool _isSearching = false;
   String _localIp = "";
   String _role = 'p2'; // 初期はプレイヤー2（接続者）
+  bool _isStartingServer = false;
+  bool _isStartedServer = false;
+  TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -86,83 +91,123 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
     setState(() => _isSearching = false);
   }
 
+  Widget buildServerControlButton() {
+    if (_isStartedServer) {
+      return buildWidgetButton('サーバーを停止', _toggleServer);
+    } else {
+      return buildWidgetButton('サーバーを開始', _toggleServer);
+    }
+  }
+
+  Future<void> _toggleServer() async {
+    final connection = ref.read(lanConnectionProvider);
+    setState(() {
+      _isStartingServer = true;
+    });
+
+    if (_isStartedServer) {
+      connection.stopServer();
+      setState(() {
+        _isStartedServer = false;
+        _isStartingServer = false;
+      });
+    } else {
+      final success = await connection.startServer();
+      setState(() {
+        _isStartingServer = false;
+        _isStartedServer = success;
+      });
+      final message = success ? 'サーバーを開始しました' : 'サーバーの開始に失敗しました';
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final connection = ref.read(lanConnectionProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('接続')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text("IP:$_localIp"),
-                IconButton(
-                  icon: Icon(Icons.start),
-                  onPressed: () {
-                    connection.startServer();
-                  },
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const Text('役割:'),
-                DropdownButton<String>(
-                  value: _role,
-                  items: const [
-                    DropdownMenuItem(value: 'p2', child: Text('プレイヤー2')),
-                    DropdownMenuItem(value: 'p1', child: Text('プレイヤー1')),
-                    DropdownMenuItem(value: 'spectator', child: Text('観戦者')),
-                  ],
-                  onChanged: (val) => setState(() => _role = val!),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const Text('1. 自動検出（mDNS）'),
-                IconButton(
-                  icon: Icon(Icons.refresh),
-                  onPressed: () {
-                    _startMdnsDiscovery();
-                  },
-                ),
-              ],
-            ),
-            if (_isSearching) const CircularProgressIndicator(),
-            if (_detectedIp != null) Text('見つかったIP: $_detectedIp'),
-            const SizedBox(height: 24),
-            const Text('2. IPアドレスを手動入力'),
-            TextField(
-              controller: _controller,
-              decoration: const InputDecoration(labelText: '例: 192.168.0.10'),
-            ),
-            const SizedBox(height: 24),
-            Center(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final ip = _controller.text.trim();
-                  final success = await connection.connectToHost(ip);
-                  if (!success) {
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('ホストに接続できませんでした')),
-                      );
-                    }
-                    return;
-                  }
-                  if (context.mounted) {
-                    context.push(shogiBoardPath, extra: _role);
-                  }
-                },
-                child: const Text('接続する'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text("IP:$_localIp"),
+                  SizedBox(width: 30),
+                  if (_isStartingServer) const CircularProgressIndicator(),
+                  buildServerControlButton(),
+                ],
               ),
-            ),
-          ],
+              if (connection.clients.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text("👥 接続中: ${connection.clients.join(', ')}"),
+                ),
+              SizedBox(height: DimenUtil.height18),
+              Row(
+                children: [
+                  const Text('役割:'),
+                  DropdownButton<String>(
+                    value: _role,
+                    items: const [
+                      DropdownMenuItem(value: 'p2', child: Text('プレイヤー2')),
+                      DropdownMenuItem(value: 'p1', child: Text('プレイヤー1')),
+                      DropdownMenuItem(value: 'spectator', child: Text('観戦者')),
+                    ],
+                    onChanged: (val) => setState(() => _role = val!),
+                  ),
+                ],
+              ),
+              SizedBox(height: DimenUtil.height24),
+              Row(
+                children: [
+                  const Text('1. 自動検出（mDNS）'),
+                  IconButton(
+                    icon: Icon(Icons.refresh),
+                    onPressed: () {
+                      _startMdnsDiscovery();
+                    },
+                  ),
+                ],
+              ),
+              if (_isSearching) const CircularProgressIndicator(),
+              if (_detectedIp != null) Text('見つかったIP: $_detectedIp'),
+              SizedBox(height: DimenUtil.height24),
+              const Text('2. IPアドレスを手動入力'),
+              CommonInputFieldWidget(
+                hintText: "例: 192.168.0.10",
+                controller: _controller,
+              ),
+
+              SizedBox(height: DimenUtil.height24),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final ip = _controller.text.trim();
+                    final success = await connection.connectToHost(ip);
+                    if (!success) {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('ホストに接続できませんでした')),
+                        );
+                      }
+                      return;
+                    }
+                    if (context.mounted) {
+                      context.push(shogiBoardPath, extra: _role);
+                    }
+                  },
+                  child: const Text('接続する'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

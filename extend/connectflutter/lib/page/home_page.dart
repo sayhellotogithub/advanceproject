@@ -74,28 +74,33 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildWidgetButton('Video Ads', () {
+            buildWidgetButton('Video Ads', () {
               context.push(videoAdPath);
             }),
             SizedBox(height: DimenUtil.height10),
-            _buildWidgetButton('Cupertino Checkbox Example', () {
+            buildWidgetButton('Cupertino Checkbox Example', () {
               context.push(cupertinoCheckboxPath);
             }),
             SizedBox(height: DimenUtil.height10),
-            _buildWidgetButton('Cupertino Switch Example', () {
+            buildWidgetButton('Cupertino Switch Example', () {
               context.push(cupertinoSwitchPath);
             }),
             SizedBox(height: DimenUtil.height10),
-            _buildWidgetButton('Go ban', () {
+            buildWidgetButton('Go ban', () {
               context.push(gobanPath);
             }),
             SizedBox(height: DimenUtil.height10),
-            _buildWidgetButton('StatusBar Congiguration Guide', () {
+            buildWidgetButton('StatusBar Congiguration Guide', () {
               context.push(statusBarCongigurationGuidePath);
             }),
             SizedBox(height: DimenUtil.height10),
-            _buildWidgetButton('国際将棋', () {
+            buildWidgetButton('国際将棋', () {
               context.push(connectPath);
+            }),
+
+            SizedBox(height: DimenUtil.height10),
+            buildWidgetButton('国際将棋Test', () {
+              context.push(testPath);
             }),
 
           ],
@@ -104,22 +109,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildWidgetButton(String text, VoidCallback onClick) {
-    return InkWell(
-      onTap: onClick,
-      child: Container(
-        padding: EdgeInsets.all(DimenUtil.width10),
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white, fontSize: FontSizeUtil.size14),
-        ),
-      ),
-    );
-  }
+
 
   Widget _buildNewsSection(String title, List<LinkModel> links) {
     return Column(

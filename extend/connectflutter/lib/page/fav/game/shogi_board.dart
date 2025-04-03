@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../model/game/piece/piece.dart';
+import '../../../provider/game/board_util.dart';
 import '../../../provider/game/borad_state.dart';
 
 class ShogiBoard extends ConsumerStatefulWidget {
@@ -21,7 +22,6 @@ class _ShogiBoardState extends ConsumerState<ShogiBoard> {
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -34,6 +34,29 @@ class _ShogiBoardState extends ConsumerState<ShogiBoard> {
     controller.setRole(widget.myPlayerId);
 
     final cellSize = (screenWidth - 0.5 * 20) / boardSize;
+
+    // チェックメイト or 勝敗チェック
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final message = getGameOverMessage(boardState.pieces);
+      if (message != null && context.mounted) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder:
+              (_) => AlertDialog(
+                title: const Text("ゲーム終了"),
+                content: Text(message),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text("閉じる"),
+                  ),
+                ],
+              ),
+        );
+        return;
+      }
+    });
 
     // デバッグ出力 - build メソッドが呼び出されたことを確認
     AppLogger().debug(
@@ -164,19 +187,7 @@ class _ShogiBoardState extends ConsumerState<ShogiBoard> {
     if (piece == null) {
       return const SizedBox.shrink(); // 常に Widget を返す
     }
-
-    // 駒の種類に応じて表示を変える
-    String pieceSymbol;
-    switch (piece.type.toLowerCase()) {
-      case 'king':
-        pieceSymbol = '王';
-        break;
-      case 'archer':
-        pieceSymbol = '弓';
-        break;
-      default:
-        pieceSymbol = piece.type.toUpperCase();
-    }
+    String pieceSymbol = getUnicodeSymbol(piece);
 
     return Container(
       width: 36,
@@ -193,8 +204,7 @@ class _ShogiBoardState extends ConsumerState<ShogiBoard> {
         child: Text(
           pieceSymbol,
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+            fontSize: FontSizeUtil.size24,
             color: piece.owner == 'p1' ? Colors.blue[800] : Colors.red[800],
           ),
         ),

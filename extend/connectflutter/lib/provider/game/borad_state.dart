@@ -7,11 +7,8 @@ import 'package:collection/collection.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../model/game/piece/archer.dart';
-import '../../model/game/piece/board.dart';
-import '../../model/game/piece/king.dart';
-import '../../model/game/piece/piece.dart';
-import '../../model/game/role.dart';
+import '../../model/game/piece/index.dart';
+import 'board_util.dart';
 import 'lan_connection_service.dart';
 
 class BoardState {
@@ -43,21 +40,11 @@ class BoardState {
 }
 
 class BoardController extends StateNotifier<BoardState> {
-  static const int boardSize = 9;
+  static const int boardSize = 8;
 
   String myRole = "p1";
 
-  BoardController()
-    : super(
-        BoardState(
-          pieces: [
-            King('k1', getMyPlayerIdFromRole(Role.player1), 4, 8),
-            King('k2', getMyPlayerIdFromRole(Role.player2), 4, 0),
-            Archer('a1', getMyPlayerIdFromRole(Role.player1), 2, 8),
-            Archer('a2', getMyPlayerIdFromRole(Role.player2), 6, 0),
-          ],
-        ),
-      );
+  BoardController() : super(BoardState(pieces: createInitialChessPieces()));
 
   bool isMyTurn() {
     return state.currentTurn == myRole;
@@ -121,7 +108,7 @@ class BoardController extends StateNotifier<BoardState> {
       final nextTurn = myRole == 'p1' ? 'p2' : 'p1';
       saveOldData(moved, nextTurn);
       // 👇 通信で送る
-      ref.read(lanConnectionProvider).send({
+      ref.read(lanConnectionProvider).sendToAll({
         'type': 'move',
         'pieceId': moved.id,
         'x': moved.x,

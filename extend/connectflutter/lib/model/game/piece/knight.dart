@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Author: WANG JUN
 // Date: 2025/04/01
-// Description: Knight（ナイト）
+// Description:♘ Knight（ナイト）
 // -------------------------------------------------------------------
 import 'package:connectflutter/model/game/piece/piece.dart';
 
@@ -13,13 +13,14 @@ class Knight extends Piece {
 
   @override
   List<List<int>> getAvailableMoves(Board board) {
-    final moves = [
-      [x + 1, y + 2], [x - 1, y + 2],
-      [x + 1, y - 2], [x - 1, y - 2],
-      [x + 2, y + 1], [x + 2, y - 1],
-      [x - 2, y + 1], [x - 2, y - 1],
+    const offsets = [
+      [1, 2], [2, 1], [-1, 2], [-2, 1],
+      [1, -2], [2, -1], [-1, -2], [-2, -1],
     ];
-    return moves.where((pos) => board.canMoveTo(owner, pos[0], pos[1])).toList();
+    return offsets
+        .map((o) => [x + o[0], y + o[1]])
+        .where((pos) => board.canMoveTo(owner, pos[0], pos[1]))
+        .toList();
   }
   @override
   Piece copyWith({int? x, int? y}) {

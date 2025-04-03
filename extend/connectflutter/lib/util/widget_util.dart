@@ -6,6 +6,7 @@
 import 'package:connectflutter/model/index.dart';
 import 'package:flutter/material.dart';
 
+import 'dimen_util.dart';
 import 'font_size_util.dart';
 import 'url_util.dart';
 
@@ -27,6 +28,23 @@ getLinkText(LinkModel link) {
       style: TextStyle(
         color: Colors.blue,
         decoration: TextDecoration.underline,
+      ),
+    ),
+  );
+}
+
+Widget buildWidgetButton(String text, VoidCallback onClick) {
+  return InkWell(
+    onTap: onClick,
+    child: Container(
+      padding: EdgeInsets.all(DimenUtil.width10),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.white, fontSize: FontSizeUtil.size14),
       ),
     ),
   );

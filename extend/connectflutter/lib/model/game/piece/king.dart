@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Author: WANG JUN
 // Date: 2025/04/01
-// Description: 
+// Description:  ♔　King（王）
 // -------------------------------------------------------------------
 import 'package:connectflutter/model/game/piece/piece.dart';
 

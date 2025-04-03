@@ -8,18 +8,20 @@ import 'package:connectflutter/util/index.dart';
 import 'package:flutter/material.dart';
 
 class CommonInputFieldWidget extends StatefulWidget {
-  String? hintText;
-  ValueChanged<String>? textChanged;
-  EdgeInsetsGeometry? padding;
-  bool obscureText;
+  final String? hintText;
+  final ValueChanged<String>? textChanged;
+  final EdgeInsetsGeometry? padding;
+  final bool obscureText;
+  final TextEditingController? controller;
 
   CommonInputFieldWidget({
-    Key? key,
+    super.key,
     this.hintText,
     this.textChanged,
     this.padding,
     this.obscureText = false,
-  }) : super(key: key);
+    this.controller,
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -28,27 +30,24 @@ class CommonInputFieldWidget extends StatefulWidget {
 }
 
 class _CommonInputFieldWidget extends State<CommonInputFieldWidget> {
-  final _textEditingController = TextEditingController();
-  String inputText = "";
+  late final TextEditingController _textEditingController;
 
   @override
   void initState() {
+    _textEditingController = widget.controller ?? TextEditingController();
     _textEditingController.addListener(_handleTextInput);
     super.initState();
   }
 
   void _handleTextInput() {
     widget.textChanged?.call(_textEditingController.text);
-    setState(() {
-      inputText = _textEditingController.text;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      padding: widget.padding ?? EdgeInsets.only(left: 15, right: 15),
+      padding: widget.padding ?? EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         color: Color(0xFFF6F6F6),
         borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -70,17 +69,15 @@ class _CommonInputFieldWidget extends State<CommonInputFieldWidget> {
               ),
             ),
           ),
-          Visibility(
-            child: InkWell(
+          if (_textEditingController.text.isNotEmpty)
+            InkWell(
               child: Assets.icon.iconClearGrey.svg(),
               onTap: () {
                 setState(() {
-                  _textEditingController.text = "";
+                  _textEditingController.clear();
                 });
               },
             ),
-            visible: inputText.length > 0,
-          ),
         ],
       ),
     );
@@ -88,7 +85,9 @@ class _CommonInputFieldWidget extends State<CommonInputFieldWidget> {
 
   @override
   void dispose() {
+    _textEditingController.removeListener(_handleTextInput);
     _textEditingController.dispose();
+
     super.dispose();
   }
 }
