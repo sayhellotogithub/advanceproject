@@ -102,6 +102,10 @@ class _HomePageState extends State<HomePage> {
             buildWidgetButton('国際将棋Test', () {
               context.push(testPath);
             }),
+            SizedBox(height: DimenUtil.height10),
+            buildWidgetButton('BallTest', () {
+              context.push(ballPath);
+            }),
 
           ],
         ),

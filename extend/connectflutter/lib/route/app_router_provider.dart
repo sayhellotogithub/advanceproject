@@ -16,6 +16,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../page/account_main_page.dart';
+import '../page/fav/game/ball_game_page.dart';
 import '../page/fav/game/goban_page.dart';
 import '../page/home_page.dart';
 import '../page/login/password_login_page.dart';
@@ -62,6 +63,7 @@ const String bluetoothPath = "/fav/game/bluetooth";
 const String shogiBoardPath = "/fav/game/shogiboard";
 const String connectPath = "/fav/game/connect";
 const String testPath = "/fav/game/test";
+const String ballPath = "/fav/game/ball";
 
 final routerNotifier = RouterNotifier();
 
@@ -150,6 +152,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(path: connectPath, builder: (context, state) => ConnectPage()),
       GoRoute(path: testPath, builder: (context, state) => TestPage()),
+      GoRoute(path: ballPath, builder: (context, state) => BallGamePage()),
     ],
     errorBuilder:
         (context, state) =>
