@@ -8,6 +8,7 @@ import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
 import 'package:connectflutter/page/mine/mine_page.dart';
 import 'package:connectflutter/page/mine/setting_page.dart';
+import 'package:connectflutter/page/theme/change_icon_page.dart';
 import 'package:connectflutter/page/theme/status_bar_configuration_guide_page.dart';
 import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
 import 'package:connectflutter/page/widget/switch/cupertino_switch_example.dart';
@@ -64,6 +65,7 @@ const String shogiBoardPath = "/fav/game/shogiboard";
 const String connectPath = "/fav/game/connect";
 const String testPath = "/fav/game/test";
 const String ballPath = "/fav/game/ball";
+const String changeIconPath = "/theme/changeIcon";
 
 final routerNotifier = RouterNotifier();
 
@@ -153,6 +155,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: connectPath, builder: (context, state) => ConnectPage()),
       GoRoute(path: testPath, builder: (context, state) => TestPage()),
       GoRoute(path: ballPath, builder: (context, state) => BallGamePage()),
+      GoRoute(
+        path: changeIconPath,
+        builder: (context, state) => ChangeIconPage(),
+      ),
     ],
     errorBuilder:
         (context, state) =>

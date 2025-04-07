@@ -7,11 +7,15 @@ import 'message.dart';
 
 class MoveMessage extends Message {
   final String pieceId;
-  final List<int> from;
-  final List<int> to;
-  final String playerId;
+  final int x, y;
+  final String nextTurn;
 
-  MoveMessage(this.pieceId, this.from, this.to, this.playerId);
+  MoveMessage({
+    required this.pieceId,
+    required this.x,
+    required this.y,
+    required this.nextTurn,
+  });
 
   @override
   String get type => 'move';
@@ -20,15 +24,17 @@ class MoveMessage extends Message {
   Map<String, dynamic> toJson() => {
     'type': type,
     'pieceId': pieceId,
-    'from': from,
-    'to': to,
-    'playerId': playerId,
+    'x': x,
+    'y': y,
+    'nextTurn': nextTurn,
   };
 
-  factory MoveMessage.fromJson(Map<String, dynamic> json) => MoveMessage(
-    json['pieceId'],
-    List<int>.from(json['from']),
-    List<int>.from(json['to']),
-    json['playerId'],
-  );
+  static MoveMessage fromJson(Map<String, dynamic> json) {
+    return MoveMessage(
+      pieceId: json['pieceId'],
+      x: json['x'],
+      y: json['y'],
+      nextTurn: json['nextTurn'],
+    );
+  }
 }

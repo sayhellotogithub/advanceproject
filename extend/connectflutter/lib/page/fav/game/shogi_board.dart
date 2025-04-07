@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../model/game/piece/piece.dart';
 import '../../../provider/game/board_util.dart';
 import '../../../provider/game/borad_state.dart';
+import '../../../provider/game/game_messenger.dart';
 
 class ShogiBoard extends ConsumerStatefulWidget {
   final String myPlayerId; // 'p1', 'p2', or 'spectator'
@@ -29,6 +30,7 @@ class _ShogiBoardState extends ConsumerState<ShogiBoard> {
   Widget build(BuildContext context) {
     final boardState = ref.watch(boardProvider);
     final controller = ref.read(boardProvider.notifier);
+    final messenger = ref.read(gameMessengerProvider);
 
     final screenWidth = MediaQuery.of(context).size.width;
     controller.setRole(widget.myPlayerId);

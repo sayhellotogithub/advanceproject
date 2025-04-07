@@ -107,13 +107,15 @@ class _HomePageState extends State<HomePage> {
               context.push(ballPath);
             }),
 
+            SizedBox(height: DimenUtil.height10),
+            buildWidgetButton("アイコン変更", () {
+              context.push(changeIconPath);
+            }),
           ],
         ),
       ),
     );
   }
-
-
 
   Widget _buildNewsSection(String title, List<LinkModel> links) {
     return Column(

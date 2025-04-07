@@ -3,6 +3,7 @@
 // Date: 2025/04/01
 // Description:基底クラス
 // -------------------------------------------------------------------
+import 'package:connectflutter/model/game/message/reset_message.dart';
 import 'package:connectflutter/model/game/message/start_game_message.dart';
 import 'package:connectflutter/model/game/message/turn_message.dart';
 import 'package:connectflutter/model/game/message/win_message.dart';
@@ -27,8 +28,11 @@ abstract class Message {
         return TurnMessage.fromJson(json);
       case 'win':
         return WinMessage.fromJson(json);
+      case 'reset':
+        return ResetMessage.fromJson(json);
       default:
         throw Exception('Unknown message type: ${json['type']}');
     }
   }
 }
+

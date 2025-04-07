@@ -7,8 +7,10 @@ import 'package:collection/collection.dart';
 import 'package:connectflutter/util/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../model/game/message/move_message.dart';
 import '../../model/game/piece/index.dart';
 import 'board_util.dart';
+import 'game_messenger.dart';
 import 'lan_connection_service.dart';
 
 class BoardState {
@@ -68,14 +70,26 @@ class BoardController extends StateNotifier<BoardState> {
   void sendOldDataAgain(WidgetRef ref) {
     if (oldPiece != null) {
       // 👇 通信で送る
-      ref.read(lanConnectionProvider).send({
-        'type': 'move',
-        'pieceId': oldPiece!.id,
-        'x': oldPiece!.x,
-        'y': oldPiece!.y,
-        'nextTurn': preTurn,
-      });
+      ref
+          .read(gameMessengerProvider)
+          .send(
+            MoveMessage(
+              pieceId: oldPiece!.id,
+              x: oldPiece!.x,
+              y: oldPiece!.y,
+              nextTurn: preTurn ?? "p1",
+            ),
+          );
     }
+  }
+
+  void resetGame() {
+    state = BoardState(
+      pieces: createInitialChessPieces(),
+      selectedPiece: null,
+      highlightedCells: [],
+      currentTurn: 'p1',
+    );
   }
 
   void saveOldData(Piece? oldPiece, String? preTurn) {
