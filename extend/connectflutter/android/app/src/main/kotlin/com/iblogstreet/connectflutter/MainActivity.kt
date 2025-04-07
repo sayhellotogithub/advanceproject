@@ -7,7 +7,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
-    private val CHANNEL = "com.iblogstreet.icon_changer"
+    private val CHANNEL = "com.iblogstreet.connectflutter.dynamic_icon/icon"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -35,8 +35,8 @@ class MainActivity : FlutterActivity() {
             val packageName = packageName
 
             val activityToEnable = when (aliasName) {
-                "IconOne" -> "$packageName.MainActivity.IconOne"
-                "IconTwo" -> "$packageName.MainActivity.IconTwo"
+                "one" -> "$packageName.MainActivity.IconOne"
+                "two" -> "$packageName.MainActivity.IconTwo"
                 else -> "$packageName.MainActivity.Default"
             }
             packageManager.setComponentEnabledSetting(
