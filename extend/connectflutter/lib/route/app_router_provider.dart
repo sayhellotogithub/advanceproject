@@ -11,6 +11,7 @@ import 'package:connectflutter/page/mine/setting_page.dart';
 import 'package:connectflutter/page/theme/change_icon_page.dart';
 import 'package:connectflutter/page/theme/status_bar_configuration_guide_page.dart';
 import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
+import 'package:connectflutter/page/widget/slide_segment/slide_segmented_control_page.dart';
 import 'package:connectflutter/page/widget/switch/cupertino_switch_example.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,6 +67,8 @@ const String connectPath = "/fav/game/connect";
 const String testPath = "/fav/game/test";
 const String ballPath = "/fav/game/ball";
 const String changeIconPath = "/theme/changeIcon";
+const String slideSegmentedControlPath =
+    "/widget/segmentedControl/slideSegmentedControl";
 
 final routerNotifier = RouterNotifier();
 
@@ -158,6 +161,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: changeIconPath,
         builder: (context, state) => ChangeIconPage(),
+      ),
+      GoRoute(
+        path: slideSegmentedControlPath,
+        builder: (context, state) => SlideSegmentedControlPage(),
       ),
     ],
     errorBuilder:

@@ -86,6 +86,10 @@ class _HomePageState extends State<HomePage> {
               context.push(cupertinoSwitchPath);
             }),
             SizedBox(height: DimenUtil.height10),
+            buildWidgetButton('slideSegmentedControl Example', () {
+              context.push(slideSegmentedControlPath);
+            }),
+            SizedBox(height: DimenUtil.height10),
             buildWidgetButton('Go ban', () {
               context.push(gobanPath);
             }),
