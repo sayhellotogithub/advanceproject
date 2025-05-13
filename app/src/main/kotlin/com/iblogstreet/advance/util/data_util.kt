@@ -1,7 +1,7 @@
 package com.iblogstreet.advance.util
 
-import com.iblogstreet.advance.model.EntryType
-import com.iblogstreet.advance.model.FunctionEntryModel
+import com.iblogstreet.advance.domain.model.EntryType
+import com.iblogstreet.advance.domain.model.FunctionEntryModel
 
 /**
  * @author junwang

@@ -1,4 +1,4 @@
-package com.iblogstreet.advance.model
+package com.iblogstreet.advance.domain.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
