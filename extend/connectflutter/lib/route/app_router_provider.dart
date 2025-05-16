@@ -11,6 +11,7 @@ import 'package:connectflutter/page/mine/setting_page.dart';
 import 'package:connectflutter/page/theme/change_icon_page.dart';
 import 'package:connectflutter/page/theme/status_bar_configuration_guide_page.dart';
 import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
+import 'package:connectflutter/page/widget/refresh/refresh_main_page.dart';
 import 'package:connectflutter/page/widget/slide_segment/slide_segmented_control_page.dart';
 import 'package:connectflutter/page/widget/switch/cupertino_switch_example.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,9 @@ import '../page/open_account_step/electronic_signature_page.dart';
 import '../page/open_account_step/open_account_introduce_page.dart';
 import '../page/open_account_step/upload_bank_page.dart';
 import '../page/video/video_ad_page.dart';
+import '../page/widget/refresh/custom_refresh_page.dart';
+import '../page/widget/refresh/lottie_refresh_page.dart';
+import '../page/widget/refresh/refresh_example_page.dart';
 import '../provider/app_state_manager_provier.dart';
 import '../util/index.dart';
 import 'router_notifier.dart';
@@ -69,6 +73,11 @@ const String ballPath = "/fav/game/ball";
 const String changeIconPath = "/theme/changeIcon";
 const String slideSegmentedControlPath =
     "/widget/segmentedControl/slideSegmentedControl";
+const String refreshMainPath = "/widget/refresh/refreshMain";
+
+const String refreshExamplePath = "/widget/refresh/refreshExample";
+const String customRefreshPath = "/widget/refresh/customRefresh";
+const String lottieRefreshPath = "/widget/refresh/lottieRefresh";
 
 final routerNotifier = RouterNotifier();
 
@@ -106,8 +115,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: resetPasswordPath + '/:account/:bizToken',
-        builder:
-            (context, state) => ResetPasswordPage(account: "", bizToken: ""),
+        builder: (context, state) {
+          final String account = state.pathParameters['account'] ?? "";
+          final String bizToken = state.pathParameters['bizToken'] ?? "";
+          return ResetPasswordPage(account: account, bizToken: bizToken);
+        },
       ),
       GoRoute(
         path: electronicSignaturePath,
@@ -165,6 +177,30 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: slideSegmentedControlPath,
         builder: (context, state) => SlideSegmentedControlPage(),
+      ),
+      GoRoute(
+        path: refreshExamplePath,
+        builder: (context, state) {
+          return RefreshExamplePage();
+        },
+      ),
+      GoRoute(
+        path: refreshMainPath,
+        builder: (context, state) {
+          return RefreshMainPage();
+        },
+      ),
+      GoRoute(
+        path: customRefreshPath,
+        builder: (context, state) {
+          return CustomRefreshPage();
+        },
+      ),
+      GoRoute(
+        path: lottieRefreshPath,
+        builder: (context, state) {
+          return const LottieRefreshPage();
+        },
       ),
     ],
     errorBuilder:

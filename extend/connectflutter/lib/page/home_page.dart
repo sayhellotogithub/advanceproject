@@ -115,6 +115,11 @@ class _HomePageState extends State<HomePage> {
             buildWidgetButton("アイコン変更", () {
               context.push(changeIconPath);
             }),
+
+            SizedBox(height: DimenUtil.height10),
+            buildWidgetButton("リフレッシュ", () {
+              context.push(refreshMainPath);
+            }),
           ],
         ),
       ),

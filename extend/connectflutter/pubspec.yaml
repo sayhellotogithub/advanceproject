@@ -64,6 +64,8 @@ dependencies:
   latlong2: ^0.9.1
   cached_network_image: ^3.4.1
   flutter_blue_plus: ^1.35.3
+  custom_refresh_indicator: ^4.0.1
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -111,6 +113,7 @@ flutter:
   assets:
     - assets/icon/
     - assets/image/
+    - assets/lottie/
     - assets/ic_launcher.png
 
   # To add assets to your application, add an assets section, like this:
