@@ -41,13 +41,11 @@ dependencies {
     implementation(projects.common.util)
     implementation(libs.kotlin.logging)
     implementation(libs.org.slf4j.simple)
-
+    implementation(platform(libs.androidx.compose.bom))
 
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.material3.adaptive)
-    implementation(libs.androidx.compose.material3.adaptive.layout)
-    implementation(libs.androidx.compose.material3.adaptive.navigation)
-    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.bundles.androidx.compose.material3)
+
     implementation(libs.androidx.compose.runtime.tracing)
     implementation(libs.androidx.core.ktx)
 //    implementation(libs.androidx.core.splashscreen)

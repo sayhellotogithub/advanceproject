@@ -10,6 +10,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.designsystem)
     implementation(libs.androidx.appcompat)
     compileOnly(projects.feature.photoExpose)
 //    testImplementation(projects.core.testing)

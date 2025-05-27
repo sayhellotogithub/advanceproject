@@ -14,18 +14,15 @@ android {
 
 dependencies {
 
+    api(platform(libs.androidx.compose.bom))
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.foundation.layout)
     api(libs.androidx.compose.material.iconsExtended)
-    api(libs.androidx.compose.material3)
-    api(libs.androidx.compose.material3.adaptive)
-    api(libs.androidx.compose.material3.navigationSuite)
+    api(libs.bundles.androidx.compose.material3)
+    api(libs.bundles.androidx.compose.ui)
     api(libs.androidx.compose.runtime)
-    api(libs.androidx.compose.ui.util)
 
     implementation(libs.coil.kt.compose)
-    implementation(libs.androidx.core)
-    implementation(libs.androidx.ui.text.google.fonts)
 
     testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.androidx.compose.ui.testManifest)

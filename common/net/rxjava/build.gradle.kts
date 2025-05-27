@@ -10,6 +10,7 @@ android {
 
 dependencies {
 
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.bundles.rxjava3)
     testImplementation(libs.androidx.compose.ui.test)
