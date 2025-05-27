@@ -1,4 +1,5 @@
 [versions]
+# dependencies
 accompanist = "0.34.0"
 androidDesugarJdkLibs = "2.0.4"
 # AGP and tools should be updated together
