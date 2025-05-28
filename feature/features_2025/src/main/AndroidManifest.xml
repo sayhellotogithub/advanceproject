@@ -7,5 +7,8 @@
             android:theme="@style/Theme.AppCompat">
 
         </activity>
+        <activity
+            android:name="com.iblogstreet.features_2025.presentation.ui.Material3ExpressiveScreen"
+            android:theme="@style/Theme.AppCompat" />
     </application>
 </manifest>
