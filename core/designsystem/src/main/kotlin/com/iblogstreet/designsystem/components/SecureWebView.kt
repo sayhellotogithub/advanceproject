@@ -38,6 +38,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 @Composable
 fun SecureWebView(
     url: String,
+    allowedDomains: List<String> = listOf(""),
     onPageStarted: (String) -> Unit = {},
     onPageFinished: (String) -> Unit = {},
     onError: (Throwable) -> Unit = {}
@@ -63,8 +64,9 @@ fun SecureWebView(
                     request: WebResourceRequest?
                 ): Boolean {
                     val host = request?.url?.host
+                    val isAllowed = host != null && allowedDomains.any { host.endsWith(it) }
                     // ホストが許可されている場合のみ、URLをロードする
-                    return if (host != null && (host.endsWith("example.com") || host.endsWith("example.org"))) {
+                    return if (isAllowed) {
                         false // URLをロードする
                     } else {
                         val intent = Intent(Intent.ACTION_VIEW, request?.url)
