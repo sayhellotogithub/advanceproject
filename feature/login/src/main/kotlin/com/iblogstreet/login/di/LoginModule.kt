@@ -1,7 +1,7 @@
 package com.iblogstreet.login.di
 
 import com.iblogstreet.login.expose.LoginExpose
-import com.iblogstreet.login.exposeimpl.LoginExposeImpi
+import com.iblogstreet.login.exposeimpl.LoginExposeImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,6 +16,5 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class LoginModule {
     @Binds
-    @Singleton
-    abstract fun bindLoginExpose(loginExposeImpl:LoginExposeImpi):LoginExpose
+    abstract fun bindLoginExpose(loginExposeImpl: LoginExposeImpl):LoginExpose
 }

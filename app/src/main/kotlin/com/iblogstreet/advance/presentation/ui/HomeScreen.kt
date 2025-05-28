@@ -10,15 +10,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,17 +28,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.iblogstreet.advance.R
 import com.iblogstreet.advance.domain.model.EntryType
-import com.iblogstreet.advance.domain.model.FunctionEntryModel
 import com.iblogstreet.advance.util.data_util
-import com.iblogstreet.advance.util.data_util.Companion.entryTypeList
-import com.iblogstreet.login.expose.LoginExpose
-import com.iblogstreet.photo.expose.PhotoExpose
 
 /**
  * @author junwang
@@ -46,8 +42,7 @@ import com.iblogstreet.photo.expose.PhotoExpose
  */
 @Composable
 fun HomeScreen(
-    modifier: Modifier, loginExpose: LoginExpose,
-    photoExpose: PhotoExpose
+    modifier: Modifier, callBack: ((EntryType) -> Unit)?
 ) {
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())
@@ -57,76 +52,46 @@ fun HomeScreen(
             photoList()
         }
         ItemSection(title = "module") {
-            FunctionEntryGrid(
-                modifier = Modifier.padding(horizontal = 16.dp),
-                loginExpose = loginExpose,
-                photoExpose = photoExpose
-            )
+
+            ModuleButton(
+                buttonText = stringResource(id = R.string.button_login_text),
+                buttonClick = {
+                    callBack?.invoke(EntryType.LOGIN)
+                })
+            ModuleButton(
+                buttonText = stringResource(id = R.string.button_features_text),
+                buttonClick = {
+                    callBack?.invoke(EntryType.FEATURES)
+                })
+            ModuleButton(
+                buttonText = stringResource(id = R.string.button_photo_text),
+                buttonClick = {
+                    callBack?.invoke(EntryType.PHOTO)
+                })
+
         }
         Spacer(Modifier.height(16.dp))
     }
 }
 
 @Composable
-fun FunctionEntryGrid(
-    modifier: Modifier = Modifier,
-    loginExpose: LoginExpose,
-    photoExpose: PhotoExpose,
-
+private fun ModuleButton(buttonText: String, buttonClick: (() -> Unit)?) {
+    Button(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 8.dp),
+        onClick = {
+            buttonClick?.invoke()
+        }, colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Blue,
+            contentColor = Color.White
+        ), shape = RoundedCornerShape(12.dp),
+        elevation = ButtonDefaults.buttonElevation(4.dp)
     ) {
-    LazyHorizontalGrid(
-        rows = GridCells.Fixed(entryTypeList.size),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier
-            .height(130.dp)
-            .padding(bottom = 16.dp)
-
-    ) {
-        items(count = entryTypeList.size) { index ->
-            FunctionEntryCard(
-                entryType = entryTypeList.get(index),
-                loginExpose = loginExpose,
-                photoExpose = photoExpose
-            )
-
-        }
-
+        Text(text = buttonText)
     }
 }
 
-@Composable
-fun FunctionEntryCard(
-    entryType: FunctionEntryModel,
-    modifier: Modifier = Modifier,
-    loginExpose: LoginExpose,
-    photoExpose: PhotoExpose,
-
-    ) {
-    val context = LocalContext.current
-
-    if (entryType.entryType == EntryType.LOGIN) {
-        Button(onClick = {
-            photoExpose.startPhotoActivity(context)
-        }) {
-            Text(
-                "Photo", style = MaterialTheme.typography.titleMedium,
-            )
-        }
-
-    } else {
-        Button(onClick = {
-            loginExpose.startLoginActivity(context)
-        }) {
-            Text(
-                "Login", style = MaterialTheme.typography.titleMedium
-            )
-        }
-    }
-
-
-}
 
 @Composable
 fun photoList(modifier: Modifier = Modifier) {

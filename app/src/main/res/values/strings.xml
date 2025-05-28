@@ -3,4 +3,7 @@
     <string name="placeholder_search">Search</string>
     <string name="bottom_navigation_home">home</string>
     <string name="bottom_navigation_mine">mine</string>
+    <string name="button_login_text">Login</string>
+    <string name="button_photo_text">Photo</string>
+    <string name="button_features_text">Features</string>
 </resources>

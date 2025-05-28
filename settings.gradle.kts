@@ -27,6 +27,8 @@ include(":app")
 includeWithExpose(":feature:login")
 include(":common:net:rxjava")
 includeWithExpose(":feature:photo")
+include(":feature:features_2025")
+includeWithExpose(":feature:features_2025")
 
 include(":core:designsystem")
 
@@ -34,4 +36,4 @@ include(":common:util")
 include(":common:mvp")
 include(":feature:rxjavatest")
 include(":common:mvptest")
-include(":feature:features_2025")
+

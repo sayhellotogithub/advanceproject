@@ -1,6 +1,5 @@
 package com.iblogstreet.photo.di
 
-import com.iblogstreet.login.expose.LoginExpose
 import com.iblogstreet.photo.expose.PhotoExpose
 import com.iblogstreet.photo.exposeimpl.PhotoExposeImpl
 import dagger.Binds
@@ -17,6 +16,5 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class photoModule  {
     @Binds
-    @Singleton
     abstract fun bindPhotoExpose(photoExposeImpl: PhotoExposeImpl):PhotoExpose
 }

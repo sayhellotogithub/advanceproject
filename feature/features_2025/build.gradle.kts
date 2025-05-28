@@ -12,9 +12,7 @@ android {
 dependencies {
     implementation(projects.core.designsystem)
     implementation(libs.androidx.appcompat)
-    compileOnly(projects.feature.photoExpose)
-//    testImplementation(projects.core.testing)
-
+    testImplementation(libs.bundles.androidx.testing)
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 }

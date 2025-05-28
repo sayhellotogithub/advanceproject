@@ -34,21 +34,22 @@ android {
 }
 
 dependencies {
-
+    implementation(platform(libs.androidx.compose.bom))
     implementation(projects.core.designsystem)
-    implementation(projects.feature.photo)
     implementation(projects.feature.login)
+    implementation(projects.feature.photo)
+    implementation(projects.feature.features2025)
     implementation(projects.common.util)
+
     implementation(libs.kotlin.logging)
     implementation(libs.org.slf4j.simple)
-    implementation(platform(libs.androidx.compose.bom))
+
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.androidx.compose.material3)
 
     implementation(libs.androidx.compose.runtime.tracing)
     implementation(libs.androidx.core.ktx)
-//    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.navigation.compose)
@@ -60,33 +61,10 @@ dependencies {
 
     ksp(libs.hilt.compiler)
 
-//    debugImplementation(libs.androidx.compose.ui.testManifest)
-////    debugImplementation(projects.uiTestHiltManifest)
-//
-//    kspTest(libs.hilt.compiler)
-//
-//    testImplementation(projects.core.dataTest)
-//    testImplementation(libs.hilt.android.testing)
-////    testImplementation(projects.sync.syncTest)
-////
-////    testDemoImplementation(libs.robolectric)
-////    testDemoImplementation(libs.roborazzi)
-////    testDemoImplementation(projects.core.screenshotTesting)
-//
 
-////    androidTestImplementation(projects.core.testing)
-////    androidTestImplementation(projects.core.dataTest)
-////    androidTestImplementation(projects.core.datastoreTest)
-//    androidTestImplementation(libs.androidx.test.espresso.core)
-//    androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.hilt.android.testing)
     testImplementation(libs.junit)
-
-
-
-
-//    baselineProfile(projects.benchmarks)
 }
 //
 //baselineProfile {

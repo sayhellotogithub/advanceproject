@@ -24,10 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -39,19 +36,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.iblogstreet.advance.R
+import com.iblogstreet.advance.domain.model.EntryType
 import com.iblogstreet.designsystem.theme.AppTheme
-import com.iblogstreet.login.expose.LoginExpose
-import com.iblogstreet.photo.expose.PhotoExpose
 
 @Composable
-fun MainScreen(windowSize: WindowSizeClass, loginExpose: LoginExpose, photoExpose: PhotoExpose) {
+fun MainScreen(windowSize: WindowSizeClass, callBack: ((EntryType) -> Unit)?) {
 
     when (windowSize.widthSizeClass) {
         WindowWidthSizeClass.Compact ->
-            AppPortraitScape(loginExpose = loginExpose, photoExpose = photoExpose)
+            AppPortraitScape(callBack)
 
         WindowWidthSizeClass.Expanded ->
-            AppLandscape(loginExpose = loginExpose, photoExpose = photoExpose)
+            AppLandscape(callBack)
     }
 
 }
@@ -67,7 +63,7 @@ fun BottomNavigationBar(
     modifier: Modifier = Modifier,
     navController: NavHostController,
 
-) {
+    ) {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStackEntry?.destination?.route
 
@@ -75,22 +71,22 @@ fun BottomNavigationBar(
         modifier = modifier,
         contentColor = MaterialTheme.colorScheme.onBackground
     ) {
-        BottomNavItem.entries.forEach{ screen ->
+        BottomNavItem.entries.forEach { screen ->
             NavigationBarItem(
                 icon = { Icon(screen.icon, contentDescription = screen.label) },
                 label = { Text(screen.label) },
 
                 selected = currentRoute == screen.route,
                 onClick = {
-                   if(currentRoute != screen.route) {
-                       navController.navigate(screen.route) {
-                           popUpTo(navController.graph.startDestinationId) {
-                               saveState = true
-                           }
-                           launchSingleTop = true
-                           restoreState = true
-                       }
-                   }
+                    if (currentRoute != screen.route) {
+                        navController.navigate(screen.route) {
+                            popUpTo(navController.graph.startDestinationId) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
                 }
             )
         }
@@ -99,7 +95,7 @@ fun BottomNavigationBar(
 
 
 @Composable
-fun AppPortraitScape(loginExpose: LoginExpose, photoExpose: PhotoExpose) {
+fun AppPortraitScape(callBack: ((EntryType) -> Unit)?) {
     val navController = rememberNavController()
 
     AppTheme {
@@ -119,8 +115,7 @@ fun AppPortraitScape(loginExpose: LoginExpose, photoExpose: PhotoExpose) {
                 composable("home") {
                     HomeScreen(
                         modifier = Modifier.padding(padding),
-                        loginExpose = loginExpose,
-                        photoExpose = photoExpose
+                        callBack
                     )
                 }
                 composable("widget") {
@@ -139,14 +134,13 @@ fun AppPortraitScape(loginExpose: LoginExpose, photoExpose: PhotoExpose) {
 
 
 @Composable
-fun AppLandscape(loginExpose: LoginExpose, photoExpose: PhotoExpose) {
+fun AppLandscape(callBack: ((EntryType) -> Unit)?) {
     AppTheme {
         Row {
             HorizontalNavBar()
             HomeScreen(
                 modifier = Modifier.padding(16.dp),
-                loginExpose = loginExpose,
-                photoExpose = photoExpose
+                callBack
             )
         }
     }

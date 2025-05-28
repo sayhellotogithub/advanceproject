@@ -13,7 +13,8 @@ class FunctionEntryModel(
 
 enum class EntryType {
     LOGIN,
-    PHOTO
+    PHOTO,
+    FEATURES
 }
 
 data class BottomMenuItem(

@@ -131,7 +131,6 @@ androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-t
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
-androidx-compose-ui-util-text = { group = "androidx.compose.ui.util", name = "ui-util-text" }
 androidx-compose-ui-viewbinding = { group = "androidx.compose.ui", name = "ui-viewbinding" }
 
 
@@ -279,7 +278,6 @@ room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", vers
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-test-junit4", "androidx-compose-ui-testManifest"]
 
 rxjava3 = ["io-reactivex-rxjava3-rxandroid", "io-reactivex-rxjava3-rxkotlin", "io-reactivex-rxjava3-rxjava", "com-jakewharton-rxrelay3"]
-instrumented-tests = ["androidx-test-runner", "androidx-test-espresso-core"]
 
 androidx-compose-ui = [
     "androidx-compose-ui",
@@ -290,7 +288,6 @@ androidx-compose-ui = [
     "androidx-compose-ui-tooling",
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-ui-util",
-#    "androidx-compose-ui-util-text",
     "androidx-compose-ui-viewbinding"
 ]
 androidx-compose-material3 = [
@@ -300,6 +297,16 @@ androidx-compose-material3 = [
     "androidx-compose-material3-adaptive",
     "androidx-compose-material3-adaptive-layout",
     "androidx-compose-material3-adaptive-navigation"
+]
+
+androidx-testing = [
+    "androidx-test-core",
+    "androidx-test-runner",
+    "androidx-test-rules",
+    "androidx-junit",
+    "androidx-test-ext",
+    "androidx-test-espresso-core",
+    "androidx-test-uiautomator"
 ]
 
 
