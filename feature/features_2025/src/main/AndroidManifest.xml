@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <application>
         <activity
             android:name="com.iblogstreet.features_2025.FeaturesMainActivity"
@@ -9,6 +10,9 @@
         </activity>
         <activity
             android:name="com.iblogstreet.features_2025.presentation.ui.Material3ExpressiveScreen"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".presentation.ui.AndroidStudioCloudScreen"
             android:theme="@style/Theme.AppCompat" />
     </application>
 </manifest>
