@@ -9,6 +9,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import com.iblogstreet.advance.domain.model.EntryType
 import com.iblogstreet.advance.presentation.ui.MainScreen
 import com.iblogstreet.advance.presentation.viewmodel.MainActivityViewModel
+import com.iblogstreet.explore_ar.expose.ExploreArExpose
 import com.iblogstreet.features_2025.expose.FeaturesExpose
 import com.iblogstreet.login.expose.LoginExpose
 import com.iblogstreet.photo.expose.PhotoExpose
@@ -33,6 +34,9 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var featuresExpose: FeaturesExpose
 
+    @Inject
+    lateinit var exploreArExpose: ExploreArExpose
+
 
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +49,7 @@ class MainActivity : ComponentActivity() {
                     EntryType.LOGIN -> loginExpose.startLoginActivity(this)
                     EntryType.PHOTO -> photoExpose.startPhotoActivity(this)
                     EntryType.FEATURES -> featuresExpose.startFeaturesMainActivity(this)
+                    EntryType.EXPLORE_AR -> exploreArExpose.startExploreArMainScreen(this)
                     else -> {
 
                     }

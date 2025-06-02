@@ -68,6 +68,11 @@ fun HomeScreen(
                 buttonClick = {
                     callBack?.invoke(EntryType.PHOTO)
                 })
+            ModuleButton(
+                buttonText = stringResource(id = R.string.button_explore_ar_text),
+                buttonClick = {
+                    callBack?.invoke(EntryType.EXPLORE_AR)
+                })
 
         }
         Spacer(Modifier.height(16.dp))

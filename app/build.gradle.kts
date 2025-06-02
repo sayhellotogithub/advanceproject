@@ -39,6 +39,7 @@ dependencies {
     implementation(projects.feature.login)
     implementation(projects.feature.photo)
     implementation(projects.feature.features2025)
+    implementation(projects.feature.exploreAr)
     implementation(projects.common.util)
 
     implementation(libs.kotlin.logging)

@@ -9,7 +9,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
  */
 object ConstField {
     const val compileSdk = 35
-    const val minSdk = 21
+    const val minSdk = 24
     const val targetSdk = 35
     val jvmTarget = JvmTarget.JVM_11
     val javaVersion = JavaVersion.VERSION_11

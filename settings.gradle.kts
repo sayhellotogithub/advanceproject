@@ -37,3 +37,5 @@ include(":common:mvp")
 include(":feature:rxjavatest")
 include(":common:mvptest")
 
+include(":feature:explore_ar")
+includeWithExpose(":feature:explore_ar")

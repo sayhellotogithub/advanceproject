@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.iblogstreet.explore_ar">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="com.google.ar.core.depth"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
+
+
+    <application>
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required"
+            tools:replace="android:value" />
+
+        <activity
+            android:name="com.iblogstreet.explore_ar.ExploreARMainScreen"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name="com.iblogstreet.explore_ar.presentation.ui.ExploreARSolarSystemScreen"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".presentation.ui.ExploreARViewSimpleScreen"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".presentation.ui.ExploreAREarthOrbitNodeWithAnimationScreen"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".presentation.ui.ExploreAREarthWithMoonScreen"
+            android:theme="@style/Theme.AppCompat" />
+
+    </application>
+
+</manifest>

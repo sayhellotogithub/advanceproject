@@ -6,4 +6,5 @@
     <string name="button_login_text">Login</string>
     <string name="button_photo_text">Photo</string>
     <string name="button_features_text">Features</string>
+    <string name="button_explore_ar_text">Explore AR</string>
 </resources>

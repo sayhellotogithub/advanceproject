@@ -14,7 +14,8 @@ class FunctionEntryModel(
 enum class EntryType {
     LOGIN,
     PHOTO,
-    FEATURES
+    FEATURES,
+    EXPLORE_AR
 }
 
 data class BottomMenuItem(
