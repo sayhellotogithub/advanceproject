@@ -15,12 +15,6 @@ dependencies {
     // ARCore & Sceneform
     implementation(libs.com.google.core.arcore)
     implementation(libs.io.github.sceneview.arsceneview)
-//    implementation(libs.com.google.android.filament.filament.android)
-    //filament-gltfio-android
-//    implementation(libs.com.google.android.filament.gltfio.android)
-//    implementation(libs.com.google.android.filament.utils.android)
-//    implementation(libs.play.services.wearable)
-
     testImplementation(libs.bundles.androidx.testing)
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 }

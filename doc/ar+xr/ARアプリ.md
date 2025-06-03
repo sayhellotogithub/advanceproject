@@ -153,6 +153,3 @@ STEM Forgedでは、教育用に設計されたシンプルな太陽系モデル
 
 🔗 Mini Solar System（STEM Forged）
 
-------
-
-## 

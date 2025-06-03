@@ -78,16 +78,16 @@ constraintlayout = "1.0.1"
 mockitoCore = "3.12.0"
 
 arCore = "1.43.0"
-thomasSceneform = "1.21.0"
 arsceneview = "2.3.0"
 filamentVersion = "1.57.1"
 playServicesWearable = "19.0.0"
 
+
 [libraries]
 #AR
 com-google-core-arcore = { group = "com.google.ar", name = "core", version.ref = "arCore" }
-#com-gorisse-thomas-sceneform= { group = "com.gorisse.thomas.sceneform", name = "sceneform", version = "thomasSceneform" }
 io-github-sceneview-arsceneview = { group = "io.github.sceneview", name = "arsceneview", version.ref = "arsceneview" }
+
 com-google-android-filament-filament-android = { group = "com.google.android.filament", name = "filament-android", version.ref = "filamentVersion" }
 com-google-android-filament-gltfio-android = { group = "com.google.android.filament", name = "gltfio-android", version.ref = "filamentVersion" }
 com-google-android-filament-utils-android = { group = "com.google.android.filament", name = "filament-utils-android", version.ref = "filamentVersion" }

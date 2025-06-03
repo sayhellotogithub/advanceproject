@@ -111,7 +111,6 @@ fun EarthWithMoonScene() {
             onGestureListener = rememberOnGestureListener(
                 onSingleTapConfirmed = { motionEvent, _ ->
                     if (childNodes.isNotEmpty()) {
-                        // 最大数に達している場合は何もしない
                         return@rememberOnGestureListener
                     }
                     // Create an anchor at the tapped position
@@ -146,7 +145,7 @@ fun EarthWithMoonScene() {
         )
     }
 
-    // クリーンアップ処理
+    // Cleanup process
     DisposableEffect(Unit) {
         onDispose {
             anchorInstance.value?.detach()
@@ -171,7 +170,7 @@ fun EarthWithMoonSample(
         )
     }
 
-    //月は地球の約１/4の大きさ
+    //The moon is about 1/4 the size of the Earth
     val moonNode = remember {
         ModelNode(
             modelInstance = modelLoader.createModelInstance("models/feature_explore_ar_moon.glb"),
@@ -189,27 +188,35 @@ fun EarthWithMoonSample(
     val moonSelfRotation = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
-        try {
-            launch {
+        launch {
+            try {
                 while (isActive) {
                     earthRotation.snapTo((earthRotation.value + 1f) % 360f)
                     delay(16L)
                 }
+            } catch (e: Exception) {
+                Log.e("EarthRotation", "Error during earth rotation", e)
             }
-            launch {
+        }
+        launch {
+            try {
                 while (isActive) {
                     moonOrbitRotation.snapTo((moonOrbitRotation.value + 1.5f) % 360f)
                     delay(16L)
                 }
+            } catch (e: Exception) {
+                Log.e("MoonOrbitRotation", "Error during moon orbit", e)
             }
-            launch {
+        }
+        launch {
+            try {
                 while (isActive) {
-                    moonSelfRotation.snapTo((moonSelfRotation.value + 1f) % 360f)  // 自転速度調整
-                    delay(16L) // 60fps
+                    moonSelfRotation.snapTo((moonSelfRotation.value + 1f) % 360f)
+                    delay(16L)
                 }
+            } catch (e: Exception) {
+                Log.e("MoonSelfRotation", "Error during moon self rotation", e)
             }
-        } catch (e: Exception) {
-            Log.e("Animation", "Error during rotation animation", e)
         }
     }
 
