@@ -1,6 +1,5 @@
 package com.iblogstreet.features_2025.presentation.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.iblogstreet.designsystem.components.PrimaryButton
-import com.iblogstreet.designsystem.components.SecureWebView
-import com.iblogstreet.designsystem.theme.AppTheme
+import com.iblogstreet.ui.components.SecureWebView
+import com.iblogstreet.ui.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

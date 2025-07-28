@@ -37,3 +37,5 @@ google-services.json
 *_expose/
 app/pro/release/app-pro-release.apk
 app/pro/release/output-metadata.json
+/build-logic/.kotlin/
+/.kotlin/

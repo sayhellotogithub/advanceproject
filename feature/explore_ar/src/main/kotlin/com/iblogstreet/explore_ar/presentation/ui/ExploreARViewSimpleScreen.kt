@@ -14,7 +14,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.iblogstreet.designsystem.theme.AppTheme
+import com.iblogstreet.ui.theme.AppTheme
 import com.iblogstreet.explore_ar.presentation.widget.ARViewSample
 import com.iblogstreet.explore_ar.presentation.widget.rememberCameraPermissionState
 import dagger.hilt.android.AndroidEntryPoint

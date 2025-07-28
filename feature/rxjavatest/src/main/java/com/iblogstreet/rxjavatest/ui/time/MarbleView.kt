@@ -31,13 +31,10 @@
 package com.iblogstreet.rxjavatest.ui.time
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Color
 import android.os.Handler
-import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -46,7 +43,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -54,8 +50,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.iblogstreet.designsystem.theme.secondaryContainerLight
-import com.iblogstreet.rxjavatest.R
+import com.iblogstreet.ui.theme.secondaryContainerLight
 import com.iblogstreet.rxjavatest.ui.time.utils.toPx
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable

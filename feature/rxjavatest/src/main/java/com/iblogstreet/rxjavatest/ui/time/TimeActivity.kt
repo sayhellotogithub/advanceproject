@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import com.iblogstreet.designsystem.theme.AppTheme
+import com.iblogstreet.ui.theme.AppTheme
 import com.raywenderlich.android.timeoperators.DelayActivity
 import com.raywenderlich.android.timeoperators.ReplayActivity
 import com.raywenderlich.android.timeoperators.TimeoutActivity

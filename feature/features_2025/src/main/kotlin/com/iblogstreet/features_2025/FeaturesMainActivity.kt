@@ -14,8 +14,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.iblogstreet.designsystem.components.PrimaryButton
-import com.iblogstreet.designsystem.theme.AppTheme
+import com.iblogstreet.ui.components.PrimaryButton
+import com.iblogstreet.ui.theme.AppTheme
 import com.iblogstreet.features_2025.presentation.ui.AndroidStudioCloudScreen
 import com.iblogstreet.features_2025.presentation.ui.Material3ExpressiveScreen
 import dagger.hilt.android.AndroidEntryPoint

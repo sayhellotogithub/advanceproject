@@ -16,8 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.iblogstreet.designsystem.theme.AppTheme
-import com.iblogstreet.login.expose.LoginExpose
+import com.iblogstreet.ui.theme.AppTheme
 import com.iblogstreet.photo.expose.PhotoExpose
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

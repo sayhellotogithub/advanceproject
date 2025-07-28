@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.iblog.android.application)
     alias(libs.plugins.iblog.android.application.compose)
@@ -35,12 +34,11 @@ android {
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
-    implementation(projects.core.designsystem)
+    implementation(projects.core.ui)
     implementation(projects.feature.login)
     implementation(projects.feature.photo)
     implementation(projects.feature.features2025)
     implementation(projects.feature.exploreAr)
-    implementation(projects.common.util)
 
     implementation(libs.kotlin.logging)
     implementation(libs.org.slf4j.simple)
@@ -61,6 +59,7 @@ dependencies {
     implementation(libs.coil.kt)
 
     ksp(libs.hilt.compiler)
+    implementation(libs.androidx.security.crypto)
 
 
     androidTestImplementation(libs.androidx.compose.ui.test)

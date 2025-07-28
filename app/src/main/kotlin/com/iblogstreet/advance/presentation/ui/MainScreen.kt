@@ -37,7 +37,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.iblogstreet.advance.R
 import com.iblogstreet.advance.domain.model.EntryType
-import com.iblogstreet.designsystem.theme.AppTheme
+import com.iblogstreet.ui.theme.AppTheme
 
 @Composable
 fun MainScreen(windowSize: WindowSizeClass, callBack: ((EntryType) -> Unit)?) {
