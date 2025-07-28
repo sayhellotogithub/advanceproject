@@ -120,6 +120,11 @@ class _HomePageState extends State<HomePage> {
             buildWidgetButton("リフレッシュ", () {
               context.push(refreshMainPath);
             }),
+
+            SizedBox(height: DimenUtil.height10),
+            buildWidgetButton("InvisibleQrCode", () {
+              context.push(invisibleQrCodePath);
+            }),
           ],
         ),
       ),

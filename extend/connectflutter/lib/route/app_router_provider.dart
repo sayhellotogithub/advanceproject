@@ -8,6 +8,7 @@ import 'package:connectflutter/page/login/forget_password_main_page.dart';
 import 'package:connectflutter/page/login/reset_password_page.dart';
 import 'package:connectflutter/page/mine/mine_page.dart';
 import 'package:connectflutter/page/mine/setting_page.dart';
+import 'package:connectflutter/page/qr/invisible_qr_demo.dart';
 import 'package:connectflutter/page/theme/change_icon_page.dart';
 import 'package:connectflutter/page/theme/status_bar_configuration_guide_page.dart';
 import 'package:connectflutter/page/widget/checkbox/cupertino_checkbox_example.dart';
@@ -78,6 +79,7 @@ const String refreshMainPath = "/widget/refresh/refreshMain";
 const String refreshExamplePath = "/widget/refresh/refreshExample";
 const String customRefreshPath = "/widget/refresh/customRefresh";
 const String lottieRefreshPath = "/widget/refresh/lottieRefresh";
+const String invisibleQrCodePath = "/page/qr/invisibleQrCode";
 
 final routerNotifier = RouterNotifier();
 
@@ -200,6 +202,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: lottieRefreshPath,
         builder: (context, state) {
           return const LottieRefreshPage();
+        },
+      ),
+      GoRoute(
+        path: invisibleQrCodePath,
+        builder: (context, state) {
+          return InvisibleQRDemo();
         },
       ),
     ],

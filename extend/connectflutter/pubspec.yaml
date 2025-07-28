@@ -115,6 +115,7 @@ flutter:
     - assets/image/
     - assets/lottie/
     - assets/ic_launcher.png
+    - assets/qr/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
