@@ -63,6 +63,10 @@ secrets = "2.0.1"
 truth = "1.4.2"
 turbine = "1.1.0"
 core = "1.13.1"
+security = "1.1.0-rc01"
+sqlcipher = "4.5.0"
+sqlite= "2.5.2"
+
 
 rxjava = "3.1.8"
 rxkotlin = "3.0.1"
@@ -81,9 +85,16 @@ arCore = "1.43.0"
 arsceneview = "2.3.0"
 filamentVersion = "1.57.1"
 playServicesWearable = "19.0.0"
+materialVersion = "1.12.0"
 
 
 [libraries]
+# Security
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
+sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "sqlcipher" }
+sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+sqlite-framework = { module = "androidx.sqlite:sqlite-framework", version.ref = "sqlite" }
+
 #AR
 com-google-core-arcore = { group = "com.google.ar", name = "core", version.ref = "arCore" }
 io-github-sceneview-arsceneview = { group = "io.github.sceneview", name = "arsceneview", version.ref = "arsceneview" }
@@ -208,7 +219,6 @@ org-mockito-mockito-core = { group = "org.mockito", name = "mockito-core", versi
 org-mockito-mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoCore" }
 
 
-
 #debugImplementation 'androidx.tracing:tracing-ktx:1.2.0'.  androidTestImplementation 'androidx.tracing:tracing-ktx:1.2.0'
 androidx-tracing-ktx = { group = "androidx.tracing", name = "tracing-ktx", version.ref = "androidxTracing" }
 androidx-window-core = { group = "androidx.window", name = "window-core", version.ref = "androidxWindowManager" }
@@ -286,6 +296,7 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "playServicesWearable" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 
 
 
