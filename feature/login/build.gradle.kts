@@ -12,6 +12,7 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     compileOnly(projects.feature.photoExpose)
+    implementation(projects.domain)
 //    testImplementation(projects.core.testing)
 
 

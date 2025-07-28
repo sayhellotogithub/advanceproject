@@ -63,7 +63,7 @@ secrets = "2.0.1"
 truth = "1.4.2"
 turbine = "1.1.0"
 core = "1.13.1"
-security = "1.1.0-rc01"
+security = "1.1.0-alpha06"
 sqlcipher = "4.5.0"
 sqlite = "2.5.2"
 

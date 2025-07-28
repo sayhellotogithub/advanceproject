@@ -39,6 +39,10 @@ dependencies {
     implementation(projects.feature.photo)
     implementation(projects.feature.features2025)
     implementation(projects.feature.exploreAr)
+    implementation(projects.infrastructureCore)
+    implementation(projects.infrastructure)
+    implementation(projects.data)
+    implementation(projects.domain)
 
     implementation(libs.kotlin.logging)
     implementation(libs.org.slf4j.simple)
