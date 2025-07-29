@@ -14,4 +14,7 @@ kotlin {
 dependencies {
     implementation(projects.domain)
     implementation(projects.infrastructureCore)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
 }

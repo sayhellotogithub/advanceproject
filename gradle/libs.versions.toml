@@ -80,12 +80,14 @@ kotlinLoggingJvm = "5.1.4"
 slf4jSimple = "2.0.3"
 constraintlayout = "1.0.1"
 mockitoCore = "3.12.0"
+mockkVersion = "1.13.9"
 
 arCore = "1.43.0"
 arsceneview = "2.3.0"
 filamentVersion = "1.57.1"
 playServicesWearable = "19.0.0"
 materialVersion = "1.12.0"
+junitKtxVersion = "1.2.1"
 
 
 [libraries]
@@ -208,10 +210,17 @@ androidx-test-core = { group = "androidx.test", name = "core", version.ref = "an
 androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
 androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
-androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtxVersion" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiAutomator" }
 junit = { group = "junit", name = "junit", version.ref = "junit4" }
+
+
+
+# testImplementation 'org.mockito:mockito-core:3.12.0'
+mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
+mockk-agent-jvm= { module = "io.mockk:mockk-agent-jvm", version.ref = "mockkVersion" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkVersion" }
 
 #### testImplementation 'org.mockito:mockito-core:2.22.0'
 org-mockito-mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
@@ -330,7 +339,7 @@ androidx-testing = [
     "androidx-test-runner",
     "androidx-test-rules",
     "androidx-junit",
-    "androidx-test-ext",
+    "androidx-junit-ktx",
     "androidx-test-espresso-core",
     "androidx-test-uiautomator"
 ]

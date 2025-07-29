@@ -16,7 +16,9 @@ dependencies {
     implementation(libs.sqlite.framework)
     implementation(libs.material)
     implementation(projects.infrastructureCore)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.androidx.test.espresso.core)
 }
