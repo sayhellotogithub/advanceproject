@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.iblog.android.application)
     alias(libs.plugins.iblog.android.application.compose)
     alias(libs.plugins.iblog.android.application.flavors)
     alias(libs.plugins.iblog.android.application.jacoco)

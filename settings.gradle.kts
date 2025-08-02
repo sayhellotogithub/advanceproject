@@ -15,7 +15,6 @@ dependencyResolutionManagement {
         maven { url = uri("https://jitpack.io") }
     }
 }
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 apply(from = "$rootDir/gradle/expose/expose.gradle.kts")

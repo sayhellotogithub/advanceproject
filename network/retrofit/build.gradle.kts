@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(projects.network.networkcore)
     implementation(projects.network.i18n)
+    implementation(projects.network.error)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp)
