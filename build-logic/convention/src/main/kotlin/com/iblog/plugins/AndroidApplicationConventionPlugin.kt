@@ -17,9 +17,7 @@ package com.iblog.plugins/*
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
-import com.iblog.config.BuildConstants
 import com.iblog.verification.configureBadgingTasks
-import com.iblog.testing.devices.configureGradleManagedDevices
 import com.iblog.config.kotlin.configureKotlinAndroid
 import com.iblog.verification.configurePrintApksTask
 import org.gradle.api.Plugin

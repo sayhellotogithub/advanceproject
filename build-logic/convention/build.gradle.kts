@@ -35,7 +35,10 @@ dependencies {
 
 gradlePlugin {
     plugins {
-
+        register("kotlinMultiplatform"){
+            id = "iblog.kotlin.multiplatform"
+            implementationClass = "com.iblog.plugins.KmpConventionPlugin"
+        }
         register("androidApplicationCompose") {
             id = "iblog.android.application.compose"
             implementationClass = "com.iblog.plugins.AndroidApplicationComposeConventionPlugin"

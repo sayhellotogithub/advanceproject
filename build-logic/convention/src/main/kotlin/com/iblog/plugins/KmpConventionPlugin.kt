@@ -4,51 +4,64 @@
  */
 package com.iblog.plugins
 
-import com.iblog.extensions.addAllToSourceSet
-import com.iblog.extensions.addToSourceSet
+import com.android.build.api.dsl.LibraryExtension
+import com.iblog.extensions.IbKmpExtension
+import com.iblog.extensions.library
+import com.iblog.extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.create
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 class KmpConventionPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
-        project.pluginManager.apply("org.jetbrains.kotlin.multiplatform")
-        project.pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
+    override fun apply(project: Project) = with(project) {
+        val ext = extensions.create<IbKmpExtension>("ibKmp")
 
-        val kmp = project.extensions.getByType<KotlinMultiplatformExtension>()
-        kmp.apply {
-            androidTarget()
-            applyDefaultHierarchyTemplate()
-            iosX64()
-            iosArm64()
-            iosSimulatorArm64()
+        pluginManager.apply("com.android.library")
+        pluginManager.apply("org.jetbrains.kotlin.multiplatform")
 
-            sourceSets.apply {
-                val commonMain = getByName("commonMain")
+        extensions.configure<LibraryExtension> {
+            namespace = ext.namespace
+            compileSdk = 35
+        }
 
-                maybeCreate("iosMain").apply {
-                    dependsOn(commonMain)
-                    getByName("iosX64Main").dependsOn(this)
-                    getByName("iosArm64Main").dependsOn(this)
-                    getByName("iosSimulatorArm64Main").dependsOn(this)
+        afterEvaluate {
+            extensions.configure<KotlinMultiplatformExtension> {
+                androidTarget()
+                applyDefaultHierarchyTemplate()
+                iosX64()
+                iosArm64()
+//                iosSimulatorArm64()
+
+                ext.commonMainProjectDependencies.forEach {
+                    project.dependencies.add("commonMainImplementation", project(it))
+                }
+
+                if (ext.enableKtor) {
+                    project.dependencies.add(
+                        "commonMainImplementation",
+                        libs.library("ktor.client.core")
+                    )
+                    if (configurations.findByName("iosMainImplementation") != null && ext.enableKtor) {
+                        dependencies.add(
+                            "iosMainImplementation",
+                            libs.library("ktor.client.darwin")
+                        )
+                    }
+
+                }
+
+                project.dependencies.add(
+                    "commonMainImplementation",
+                    libs.library("kotlinx.serialization.json")
+                )
+
+                if (ext.enableRetrofit) {
+                    project.dependencies.add("androidMainImplementation", libs.library("retrofit"))
+                    project.dependencies.add("androidMainImplementation", libs.library("okhttp"))
                 }
             }
         }
-        project.dependencies.apply {
-            addAllToSourceSet(
-                "commonMain", listOf(
-                    "kotlinx-coroutines-core",
-                    "kotlinx-serialization-json",
-                    "ktor-client-core",
-                    "ktor-client-content-negotiation",
-                    "ktor-serialization-kotlinx-json"
-                ), project
-
-            )
-            addToSourceSet("androidMain", "ktor-client-okhttp", project)
-            addToSourceSet("iosMain", "ktor-client-darwin", project)
-        }
-
     }
 }

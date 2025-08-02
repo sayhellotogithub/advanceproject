@@ -222,7 +222,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit4" }
 
 # testImplementation 'org.mockito:mockito-core:3.12.0'
 mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
-mockk-agent-jvm= { module = "io.mockk:mockk-agent-jvm", version.ref = "mockkVersion" }
+mockk-agent-jvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockkVersion" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkVersion" }
 
 #### testImplementation 'org.mockito:mockito-core:2.22.0'
@@ -266,7 +266,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
-ktor-client-content-negotiation= { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
@@ -377,6 +377,7 @@ protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 room = { id = "androidx.room", version.ref = "room" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
 
 # Plugins defined by this project
 iblog-android-application = { id = "iblog.android.application", version = "unspecified" }
@@ -393,5 +394,6 @@ iblog-android-room = { id = "iblog.android.room", version = "unspecified" }
 iblog-android-test = { id = "iblog.android.test", version = "unspecified" }
 iblog-hilt = { id = "iblog.hilt", version = "unspecified" }
 iblog-jvm-library = { id = "iblog.jvm.library", version = "unspecified" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+iblog-kotlin-multiplatform = { id = "iblog.kotlin.multiplatform", version = "unspecified" }
+
 

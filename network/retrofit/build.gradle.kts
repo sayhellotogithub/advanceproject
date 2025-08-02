@@ -1,6 +1,5 @@
 plugins {
-    alias(libs.plugins.android.library)
-    kotlin("android")
+  alias(libs.plugins.iblog.android.library)
 }
 
 dependencies {
@@ -14,5 +13,4 @@ dependencies {
 }
 android {
     namespace = "com.iblogstreet.network.retrofit"
-
 }

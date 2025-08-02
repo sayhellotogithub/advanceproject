@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.iblog.android.application)
     alias(libs.plugins.iblog.android.application.compose)
     alias(libs.plugins.iblog.android.application.flavors)
     alias(libs.plugins.iblog.android.application.jacoco)
@@ -12,27 +13,18 @@ android {
         versionCode = 1
         versionName = "0.0.1"
 
-        // Custom test runner to set up Hilt dependency graph
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        vectorDrawables.useSupportLibrary = true
     }
 
-    packaging {
-        resources {
-            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-        }
-    }
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-        }
-    }
+    packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
+
+    testOptions.unitTests.isIncludeAndroidResources = true
 
 }
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
+
     implementation(projects.core.ui)
     implementation(projects.feature.login)
     implementation(projects.feature.photo)
@@ -43,43 +35,42 @@ dependencies {
     implementation(projects.data)
     implementation(projects.domain)
 
+    // Kotlin logging & SLF4J
     implementation(libs.kotlin.logging)
     implementation(libs.org.slf4j.simple)
 
+    // AndroidX core
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.window.core)
+    implementation(libs.androidx.profileinstaller)
 
+    // Compose
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.androidx.compose.material3)
-
     implementation(libs.androidx.compose.runtime.tracing)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.profileinstaller)
+
+    // Hilt & DI
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+
+    // Lifecycle & Tracing
+    implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.tracing.ktx)
-    implementation(libs.androidx.window.core)
+
+    // Other libraries
     implementation(libs.kotlinx.coroutines.guava)
     implementation(libs.coil.kt)
-
-    ksp(libs.hilt.compiler)
     implementation(libs.androidx.security.crypto)
 
+    // Test libraries
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.hilt.android.testing)
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
 }
-//
-//baselineProfile {
-//    // Don't build on every iteration of a full assemble.
-//    // Instead enable generation directly for the release build variant.
-//    automaticGenerationDuringBuild = false
-//}
 
-//dependencyGuard {
-//    configuration("prodReleaseRuntimeClasspath")
-//}

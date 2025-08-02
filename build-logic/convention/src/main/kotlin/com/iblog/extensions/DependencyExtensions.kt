@@ -36,7 +36,19 @@ fun DependencyHandler.addToSourceSet(
     alias: String,
     project: Project
 ) {
-    add("${sourceSet}Implementation", project.library(alias))
+    val configuration = "${sourceSet}Implementation"
+    val libs = project.safeVersionCatalog()
+
+    if (project.configurations.findByName(configuration) == null) {
+        project.logger.warn("⚠️ Configuration '$configuration' not found. Skipping dependency for '$alias'")
+        return
+    }
+    val dependency = libs.findLibrary(alias).orElse(null)
+    if (dependency == null) {
+        project.logger.warn("⚠️ Library alias '$alias' not found in version catalog. Skipping.")
+        return
+    }
+    add(configuration, dependency)
 }
 
 /**
