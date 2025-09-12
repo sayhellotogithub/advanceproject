@@ -12,5 +12,5 @@ open class IbKmpExtension {
     var enableRetrofit: Boolean = true
     var enableKtor: Boolean = true
     val commonMainProjectDependencies = mutableListOf<String>()
-    
+
 }
