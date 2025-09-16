@@ -43,6 +43,9 @@ dependencies {
     testImplementation(libs.org.mockito.mockito.core)
     testImplementation(libs.org.mockito.kotlin)
 
+    testImplementation(libs.assertj.core)
+    testImplementation(libs.truth)
+
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
     testImplementation(libs.junit.jupiter)

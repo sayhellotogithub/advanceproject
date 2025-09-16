@@ -61,6 +61,7 @@ roborazzi = "1.7.0"
 room = "2.6.1"
 secrets = "2.0.1"
 truth = "1.4.2"
+assertjCore= "3.26.0"
 turbine = "1.1.0"
 core = "1.13.1"
 security = "1.1.0-alpha06"
@@ -297,7 +298,10 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 
 truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+# org.assertj:assertj-core:3.26.0
+assertj-core = { group = "org.assertj", name = "assertj-core", version.ref = "assertjCore" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+
 
 # io.reactivex.rxjava3:rxjava:3.x.y"
 io-reactivex-rxjava3-rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
