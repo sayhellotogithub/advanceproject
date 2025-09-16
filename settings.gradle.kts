@@ -51,3 +51,4 @@ include(":network:i18n")
 include(":network:error")
 
 include(":core:coroutines-lab")
+include(":core:test-lab")
