@@ -81,7 +81,7 @@ junitJupiter = "5.10.2"
 kotlinLoggingJvm = "5.1.4"
 slf4jSimple = "2.0.3"
 constraintlayout = "1.0.1"
-mockitoCore = "5.12.0"
+mockitoCore = "5.2.0"
 mockkVersion = "1.13.9"
 
 arCore = "1.43.0"
@@ -231,6 +231,7 @@ mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkVersion
 org-mockito-mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
 #### org.mockito:mockito-inline
 org-mockito-mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoCore" }
+org-mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoCore" }
 
 
 #debugImplementation 'androidx.tracing:tracing-ktx:1.2.0'.  androidTestImplementation 'androidx.tracing:tracing-ktx:1.2.0'
