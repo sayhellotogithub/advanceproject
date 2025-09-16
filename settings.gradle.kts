@@ -49,3 +49,5 @@ include(":network:retrofit")
 include(":network:ktor")
 include(":network:i18n")
 include(":network:error")
+
+include(":core:coroutines-lab")

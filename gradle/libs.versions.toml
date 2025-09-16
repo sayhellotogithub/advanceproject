@@ -76,6 +76,7 @@ rxrelay = "3.0.1"
 kotlinVersion = "1.9.0"
 junit = "1.2.1"
 material = "1.12.0"
+junitJupiter = "5.10.2"
 
 kotlinLoggingJvm = "5.1.4"
 slf4jSimple = "2.0.3"
@@ -217,6 +218,7 @@ androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiAutomator" }
 junit = { group = "junit", name = "junit", version.ref = "junit4" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
 
 
 
