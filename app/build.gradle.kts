@@ -37,7 +37,9 @@ dependencies {
 
     // Kotlin logging & SLF4J
     implementation(libs.kotlin.logging)
-    implementation(libs.org.slf4j.simple)
+    implementation(libs.org.slf4j.api)
+    debugImplementation(libs.org.slf4j.android)
+    releaseImplementation(libs.org.slf4j.nop)
 
     // AndroidX core
     implementation(libs.androidx.core.ktx)
@@ -72,5 +74,8 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.junit.ktx)
+
+    testImplementation(libs.org.slf4j.api)
+    testImplementation(libs.org.slf4j.simple)
 }
 

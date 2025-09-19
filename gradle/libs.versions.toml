@@ -61,7 +61,7 @@ roborazzi = "1.7.0"
 room = "2.6.1"
 secrets = "2.0.1"
 truth = "1.4.2"
-assertjCore= "3.26.0"
+assertjCore = "3.26.0"
 turbine = "1.1.0"
 core = "1.13.1"
 security = "1.1.0-alpha06"
@@ -79,8 +79,9 @@ junit = "1.2.1"
 material = "1.12.0"
 junitJupiter = "5.10.2"
 
-kotlinLoggingJvm = "5.1.4"
-slf4jSimple = "2.0.3"
+kotlinLoggingJvm = "7.0.13"
+slf4j = "2.0.17"
+slf4jAndroid = "2.0.17-0"
 constraintlayout = "1.0.1"
 mockitoCore = "5.2.0"
 mockkVersion = "1.13.9"
@@ -314,7 +315,11 @@ com-jakewharton-rxrelay3 = { group = "com.jakewharton.rxrelay3", name = "rxrelay
 
 
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlinLoggingJvm" }
-org-slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4jSimple" }
+kotlin-klogging-android = {group="io.github.oshai" ,name = "kotlin-logging-android", version.ref = "kotlinLoggingJvm" }
+org-slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
+org-slf4j-android = { group = "uk.uuid.slf4j", name = "slf4j-android", version.ref = "slf4jAndroid" }
+org-slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+org-slf4j-nop = { group = "org.slf4j", name = "slf4j-nop", version.ref = "slf4j" }
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }

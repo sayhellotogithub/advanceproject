@@ -52,3 +52,4 @@ include(":network:error")
 
 include(":core:coroutines-lab")
 include(":core:test-lab")
+include(":feature:pano")
