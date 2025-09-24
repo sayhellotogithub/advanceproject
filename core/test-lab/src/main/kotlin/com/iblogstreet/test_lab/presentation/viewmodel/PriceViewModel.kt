@@ -21,21 +21,21 @@ data class UiState(
 )
 
 class PriceViewModel(private val useCase: CalculateFinalPriceUseCase) : ViewModel() {
-    private val _state = MutableStateFlow(UiState())
-    val uiState: StateFlow<UiState> = _state.asStateFlow()
+    private val _uiState = MutableStateFlow(UiState())
+    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     fun calc(discountInput: DiscountInput) = viewModelScope.launch {
-        _state.update { it.copy(loading = true, error = null) }
+        _uiState.update { it.copy(loading = true, error = null) }
 
         runCatching { useCase(discountInput) }.onSuccess { price ->
-            _state.update {
+            _uiState.update {
                 it.copy(
                     finalPrice = price,
                     loading = false
                 )
             }
         }.onFailure { e ->
-            _state.update {
+            _uiState.update {
                 it.copy(
                     error = e.message,
                     loading = false

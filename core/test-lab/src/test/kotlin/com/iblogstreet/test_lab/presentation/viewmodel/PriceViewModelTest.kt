@@ -52,14 +52,16 @@ class PriceViewModelTest {
 
         val vm = PriceViewModel(useCase)
         vm.uiState.test {
+            // 初期値
             assertThat(awaitItem()).isEqualTo(UiState())
 
             vm.calc(DiscountInput(1000, "SUMMER10"))
-
+            // Step 1: loading を観測
             runCurrent()
             val loading = awaitItem()
             assertThat(loading.loading).isTrue()
 
+            // Step 2: 結果を観測
             advanceUntilIdle()
             val done = awaitItem()
             assertThat(done.loading).isFalse()

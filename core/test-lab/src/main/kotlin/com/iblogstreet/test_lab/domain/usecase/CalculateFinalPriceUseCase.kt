@@ -11,9 +11,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 class CalculateFinalPriceUseCase(
     private val repo: PriceRuleRepository,
     private val io: CoroutineDispatcher,
-    private val capPercent: Int = 50,
-
-    ) {
+    private val capPercent: Int = 50
+) {
     suspend operator fun invoke(input: DiscountInput): Int {
         require(input.basePrice >= 0) { "basePrice must be positive" }
         return with(io) {

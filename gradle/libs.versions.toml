@@ -92,6 +92,7 @@ filamentVersion = "1.57.1"
 playServicesWearable = "19.0.0"
 materialVersion = "1.12.0"
 junitKtxVersion = "1.2.1"
+lifecycleViewmodelAndroid = "2.8.7"
 
 
 [libraries]
@@ -331,6 +332,7 @@ ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devto
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "playServicesWearable" }
 material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 
 
 
