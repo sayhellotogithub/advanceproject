@@ -1,4 +1,4 @@
-package com.iblogstreet.test_lab.data
+package com.iblogstreet.test_lab.domain.repository
 
 /**
  * @author junwang

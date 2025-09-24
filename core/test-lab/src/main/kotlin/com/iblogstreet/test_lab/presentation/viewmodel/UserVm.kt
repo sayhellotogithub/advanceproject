@@ -1,6 +1,6 @@
 package com.iblogstreet.test_lab.presentation.viewmodel
 
-import com.iblogstreet.test_lab.data.UserRepository
+import com.iblogstreet.test_lab.domain.repository.UserRepository
 
 /**
  * @author junwang

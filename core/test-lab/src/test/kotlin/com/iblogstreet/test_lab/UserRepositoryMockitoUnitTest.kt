@@ -1,6 +1,6 @@
 package com.iblogstreet.test_lab
 
-import com.iblogstreet.test_lab.data.UserRepository
+import com.iblogstreet.test_lab.domain.repository.UserRepository
 import com.iblogstreet.test_lab.presentation.viewmodel.UserVm
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
