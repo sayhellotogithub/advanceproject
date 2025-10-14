@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -27,15 +28,20 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+
+    implementation(libs.kotlin.logging)
+    implementation(libs.org.slf4j.api)
+
+
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

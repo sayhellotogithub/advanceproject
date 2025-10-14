@@ -23,33 +23,36 @@ val includeWithJavaExpose: (projectPaths: String) -> Unit by extra
 
 rootProject.name = "advance"
 include(":app")
+
 includeWithExpose(":feature:login")
-include(":common:net:rxjava")
 includeWithExpose(":feature:photo")
 include(":feature:features_2025")
 includeWithExpose(":feature:features_2025")
-
-include(":core:ui")
-
-include(":common:mvp")
 include(":feature:rxjavatest")
-include(":common:mvptest")
-
 include(":feature:explore_ar")
 includeWithExpose(":feature:explore_ar")
+include(":feature:pano")
+
 //include(":core:model")
 include(":domain")
 include(":data")
 include(":infrastructure")
+include(":infrastructure-core")
+
 include(":core:utils")
 include(":core:model")
-include(":infrastructure-core")
+include(":core:ui")
+
+
 include(":network:networkcore")
 include(":network:retrofit")
 include(":network:ktor")
 include(":network:i18n")
 include(":network:error")
 
-include(":core:coroutines-lab")
-include(":core:test-lab")
-include(":feature:pano")
+include(":lab:coroutines-lab")
+include(":lab:test-lab")
+include(":lab:mvp:mvp")
+include(":lab:mvp:mvptest")
+
+

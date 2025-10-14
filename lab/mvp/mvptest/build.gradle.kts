@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.common.mvp)
+    implementation(projects.lab.mvp.mvp)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
