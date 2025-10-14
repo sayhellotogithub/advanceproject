@@ -56,3 +56,4 @@ include(":lab:mvp:mvp")
 include(":lab:mvp:mvptest")
 
 
+include(":lab:test")
