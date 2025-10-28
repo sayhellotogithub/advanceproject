@@ -1,0 +1,59 @@
+CREATE TABLE users(
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+username TEXT NOT NULL UNIQUE,
+email TEXT NOT NULL UNIQUE,
+password_hash TEXT NOT NULL,
+role TEXT NOT NULL DEFAULT 'user',
+status TEXT NOT NULL DEFAULT 'active',
+display_name TEXT,
+avatar_url TEXT,
+created_at TEXT NOT NULL DEFAULT(datetime('now')),
+updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX users_email_idx ON users(email);
+CREATE INDEX users_username_idx ON users(username);
+CREATE INDEX users_status_idx ON users(status);
+
+--/* ========== Query and naming statements (will generate a type-safe interface) ========== */
+selectAll:
+SELECT * FROM users
+ORDER BY id DESC;
+
+selectById:
+SELECT * FROM users WHERE id = ?;
+
+selectByEmail:
+SELECT * FROM users WHERE email = ?;
+
+selectByUsername:
+SELECT * FROM users WHERE username = ?;
+
+selectByUsernameOrEmail:
+SELECT * FROM users WHERE username = ? OR email = ? LIMIT 1;
+
+insertUser:
+INSERT INTO users(username, email, password_hash, role, status, display_name, avatar_url)
+VALUES (?, ?, ?, COALESCE(?, 'user'), COALESCE(?, 'active'), ?, ?);
+
+updateProfile:
+UPDATE users
+SET display_name = ?, avatar_url = ?, updated_at = datetime('now')
+WHERE id = ?;
+
+updatePassword:
+UPDATE users
+SET password_hash = ?, updated_at = datetime('now')
+WHERE id = ?;
+
+softDelete:
+UPDATE users
+SET status = 'deleted', updated_at = datetime('now')
+WHERE id = ?;
+
+pagedList:
+SELECT * FROM users
+WHERE status != 'deleted'
+ORDER BY id DESC
+LIMIT ? OFFSET ?;
+

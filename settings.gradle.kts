@@ -57,3 +57,5 @@ include(":lab:mvp:mvptest")
 
 
 include(":lab:test")
+include(":lab:ktor-lab")
+

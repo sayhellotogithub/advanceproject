@@ -68,6 +68,7 @@ security = "1.1.0-alpha06"
 sqlcipher = "4.5.0"
 sqlite = "2.5.2"
 ktor = "2.3.4"
+sqldelight = "2.0.2"
 
 
 rxjava = "3.1.8"
@@ -276,6 +277,22 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 
+ktor-server-core = { module = "io.kotor:ktor-server-core", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+ktor-server-status-pages ={module="io.ktor:ktor-server-status-pages", version.ref = "ktor"}
+ktor-server-call-logging={module="io.ktor:ktor-server-call-logging", version.ref = "ktor"}
+ktor-server-cors = {module = "io.ktor:ktor-server-cors", version.ref = "ktor"}
+ktor-server-auth ={module ="io.ktor:ktor-server-auth", version.ref="ktor"}
+ktor-server-auth-jwt ={module ="io.ktor:ktor-server-auth-jwt", version.ref="ktor"}
+ktor-server-sessions ={module ="io.ktor:ktor-server-sessions", version.ref="ktor"}
+ktor-server-rate-limit ={module ="io.ktor:ktor-server-rate-limit", version.ref="ktor"}
+ktor-server-default-headers ={module ="io.ktor:ktor-server-default-headers", version.ref="ktor"}
+ktor-server-compression ={module ="io.ktor:ktor-server-compression", version.ref="ktor"}
+ktor-server-websockets ={module ="io.ktor:ktor-server-websockets", version.ref="ktor"}
+
+
+
 # lint
 lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "androidTools" }
 lint-checks = { group = "com.android.tools.lint", name = "lint-checks", version.ref = "androidTools" }
@@ -316,7 +333,7 @@ com-jakewharton-rxrelay3 = { group = "com.jakewharton.rxrelay3", name = "rxrelay
 
 
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlinLoggingJvm" }
-kotlin-klogging-android = {group="io.github.oshai" ,name = "kotlin-logging-android", version.ref = "kotlinLoggingJvm" }
+kotlin-klogging-android = { group = "io.github.oshai", name = "kotlin-logging-android", version.ref = "kotlinLoggingJvm" }
 org-slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
 org-slf4j-android = { group = "uk.uuid.slf4j", name = "slf4j-android", version.ref = "slf4jAndroid" }
 org-slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
@@ -393,6 +410,8 @@ room = { id = "androidx.room", version.ref = "room" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+#kotlin-application={id="org.jetbrains.kotlin.application", version.ref="kotlin"}
 
 
 # Plugins defined by this project
